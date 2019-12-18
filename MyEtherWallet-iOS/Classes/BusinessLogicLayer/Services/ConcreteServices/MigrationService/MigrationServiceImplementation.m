@@ -24,6 +24,7 @@
 #import "AccountModelObject.h"
 #import "NetworkModelObject.h"
 #import "MasterTokenModelObject.h"
+#import "AddressModelObject.h"
 
 #import "BlockchainNetworkTypes.h"
 
@@ -128,8 +129,8 @@ static NSString *const kMigrationServiceMomExtension  = @"mom";
       if ([components count] != 2 || [key hasPrefix:kKeychainServiceV2ItemPrefix]) {
         continue;
       }
-      BlockchainNetworkType chainId = [[components lastObject] longLongValue];
-      if (chainId == BlockchainNetworkTypeRopsten) { //Skip Ropsten network
+      NSString *chainId = [components lastObject];
+      if (NO) { //Skip Ropsten network (and Athereum?)
         continue;
       } else {
         NSDictionary *item = [self.keychainService _obtainItemWithKey:key];
@@ -150,7 +151,7 @@ static NSString *const kMigrationServiceMomExtension  = @"mom";
               uid = [[NSUUID UUID] UUIDString];
             } else {
               MasterTokenModelObject *masterTokenModelObject = [fetchedObjects firstObject];
-              AccountModelObject *accountModelObject = masterTokenModelObject.fromNetworkMaster.fromAccount;
+              AccountModelObject *accountModelObject = masterTokenModelObject.fromAddressMaster.fromNetwork.fromAccount;
               if (accountModelObject) {
                 uid = accountModelObject.uid;
               } else {

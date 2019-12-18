@@ -10,4 +10,8 @@
 
 @implementation FiatPriceModelObject
 
++ (NSString*)entityName {
+  return @"FiatPrice";
+}
+
 @end

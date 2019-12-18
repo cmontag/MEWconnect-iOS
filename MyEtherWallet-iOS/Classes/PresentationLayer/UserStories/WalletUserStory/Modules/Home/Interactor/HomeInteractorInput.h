@@ -23,6 +23,7 @@
 - (void) configurate;
 - (NSUInteger) obtainNumberOfTokens;
 - (NSDecimalNumber *) obtainTotalPriceOfTokens;
+- (NSArray<NSString *> *) obtainAddressArray;
 - (void) reloadData;
 - (void) refreshTokens;
 - (void) searchTokensWithTerm:(NSString *)term;
@@ -30,6 +31,8 @@
 - (BOOL) isConnected;
 - (void) selectMainnetNetwork;
 - (void) selectRopstenNetwork;
+- (void) selectAvaNetworkWithSubnet:(NSString *)subnetID;
+- (void) selectAddress:(NSNumber *)index;
 - (void) generateMissedKeysWithPassword:(NSString *)password;
 - (void) unlockForUpdates;
 @end

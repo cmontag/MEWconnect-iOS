@@ -30,4 +30,6 @@ FOUNDATION_EXPORT CGFloat const kCardViewAspectRatio;
 - (void) cardViewDidTouchShareButton:(CardView *)cardView;
 - (void) cardViewDidTouchBackupButton:(CardView *)cardView;
 - (void) cardViewDidTouchBackupStatusButton:(CardView *)cardView;
+- (void) cardViewDidTouchChangeCardButton:(CardView *)cardView;
+- (void) cardViewDidSwipeBackground:(CardView *)cardView;
 @end

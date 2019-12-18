@@ -9,5 +9,5 @@
 #import "_NetworkPlainObject.h"
 
 @interface NetworkPlainObject : _NetworkPlainObject
-- (BlockchainNetworkType) network;
+- (NSString *) network;
 @end

@@ -9,5 +9,8 @@
 @implementation AccountModelObject
 
 // Custom logic goes here.
++ (NSString*)entityName {
+  return @"Account";
+}
 
 @end

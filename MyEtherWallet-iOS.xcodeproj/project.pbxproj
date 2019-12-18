@@ -22,7 +22,6 @@
 
 /* Begin PBXBuildFile section */
 		010EC2BA658F3F6E97F548A3 /* ForgotPasswordPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 957E518FF3E4EF4E7588B86F /* ForgotPasswordPresenter.m */; };
-		0200A429F6FF43815C7B2AFD /* QRScannerRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 10704F14617B1B50992AA214 /* QRScannerRouter.m */; };
 		0300F8A0DC179B5B8E58E3EC /* ForgotPasswordAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD5E93E2F918844127F0D5B /* ForgotPasswordAssembly.m */; };
 		04E221A7F26EFD707BE4629D /* RestoreOptionsInteractorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 75498642349514A17A602F1F /* RestoreOptionsInteractorTests.m */; };
 		04F5D1E64EAF0168F01DDAD4 /* BuyEtherHistoryInteractorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 894A8A3B5F5735B179F33171 /* BuyEtherHistoryInteractorTests.m */; };
@@ -61,7 +60,6 @@
 		2330039409F0E27E84AA1A92 /* BuyEtherWebInteractorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 944A57DF90A32C7E6E28F044 /* BuyEtherWebInteractorTests.m */; };
 		235C5B92B3D2D778591269BF /* QRScannerAssemblyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 83BA2B6733D94174908CD81C /* QRScannerAssemblyTests.m */; };
 		244C3281788CDC011BB7F065 /* RestorePrepareInteractorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 803E78EE12B5443FB308FB4A /* RestorePrepareInteractorTests.m */; };
-		25976212577886BC56433121 /* QRScannerAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 3769858708FA853EBEE605C3 /* QRScannerAssembly.m */; };
 		259A9814766150D9B26B7844 /* BuyEtherHistoryViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 523984EAFFDB1A1152D7AF74 /* BuyEtherHistoryViewControllerTests.m */; };
 		25B5D80933B7D569D44737E7 /* ShareRouterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0F46052299D3FF10B71B78 /* ShareRouterTests.m */; };
 		25E617B7CC0D07D3C8619264 /* BackupInfoRouterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FFEF1ED758EDDCE8DD21F346 /* BackupInfoRouterTests.m */; };
@@ -79,7 +77,6 @@
 		2B4CD051283C97E7A215B46C /* BackupStartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62EC528DBD10A134610F8301 /* BackupStartViewController.m */; };
 		2CDE7A980F538C53DBA4CBF5 /* ConfirmPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4E50B68098131486EA86837 /* ConfirmPasswordViewController.m */; };
 		2E810B5E7531EEF7C3526F6B /* ConfirmedTransactionRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = E07D240F2163D0D7E4B4A890 /* ConfirmedTransactionRouter.m */; };
-		2EECE31C4CE07345BC160881 /* QRScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6DF4713EBC024BD47A9633 /* QRScannerViewController.m */; };
 		303F5BB9745526591D7597EA /* RestoreSeedRouterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E22BA1D744E066F1CF99D54 /* RestoreSeedRouterTests.m */; };
 		305F1DD38D91054D4017098F /* BuyEtherNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4070D379FDB1D7066F98D90A /* BuyEtherNavigationController.m */; };
 		30DC9DBB091E3BE7E7290791 /* BuyEtherWebInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = B948CA3B34B98B84617A893C /* BuyEtherWebInteractor.m */; };
@@ -253,8 +250,6 @@
 		5658515F224462BB006AEC7E /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = 5610EBA421DD97FB00F925C3 /* CHANGELOG.md */; };
 		5658516222497F9C006AEC7E /* MappingModel_v_2_to_3.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 5658516122497F9C006AEC7E /* MappingModel_v_2_to_3.xcmappingmodel */; };
 		5658516322497F9C006AEC7E /* MappingModel_v_2_to_3.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 5658516122497F9C006AEC7E /* MappingModel_v_2_to_3.xcmappingmodel */; };
-		56594467224167D800C9BD82 /* QRScannerStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56594466224167D800C9BD82 /* QRScannerStatusView.m */; };
-		56594468224167D800C9BD82 /* QRScannerStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56594466224167D800C9BD82 /* QRScannerStatusView.m */; };
 		5659447322417DE200C9BD82 /* UIStringList.m in Sources */ = {isa = PBXBuildFile; fileRef = 5659447222417DE200C9BD82 /* UIStringList.m */; };
 		5659447422417DE200C9BD82 /* UIStringList.m in Sources */ = {isa = PBXBuildFile; fileRef = 5659447222417DE200C9BD82 /* UIStringList.m */; };
 		5659447A22417EAB00C9BD82 /* WalletUIStringList.m in Sources */ = {isa = PBXBuildFile; fileRef = 5659447922417EAB00C9BD82 /* WalletUIStringList.m */; };
@@ -308,17 +303,11 @@
 		5677BB6020FE9FC70019E92D /* UIView+LockAlpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 5677BB5F20FE9FC70019E92D /* UIView+LockAlpha.m */; };
 		5677BB6420FEA5D30019E92D /* RotationButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5677BB6320FEA5D30019E92D /* RotationButton.m */; };
 		5677BB742100A8260019E92D /* UIBezierPath+Morphing.m in Sources */ = {isa = PBXBuildFile; fileRef = 5677BB732100A8260019E92D /* UIBezierPath+Morphing.m */; };
-		5677C5862181226500477ACD /* _AccountModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5677C5542181226400477ACD /* _AccountModelObject.m */; };
 		5677C5872181226500477ACD /* _AccountModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5677C5542181226400477ACD /* _AccountModelObject.m */; };
-		5677C5882181226500477ACD /* _FiatPriceModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5677C5562181226400477ACD /* _FiatPriceModelObject.m */; };
 		5677C5892181226500477ACD /* _FiatPriceModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5677C5562181226400477ACD /* _FiatPriceModelObject.m */; };
-		5677C58A2181226500477ACD /* _MasterTokenModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5677C5582181226400477ACD /* _MasterTokenModelObject.m */; };
 		5677C58B2181226500477ACD /* _MasterTokenModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5677C5582181226400477ACD /* _MasterTokenModelObject.m */; };
-		5677C58C2181226500477ACD /* _NetworkModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5677C55A2181226400477ACD /* _NetworkModelObject.m */; };
 		5677C58D2181226500477ACD /* _NetworkModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5677C55A2181226400477ACD /* _NetworkModelObject.m */; };
-		5677C58E2181226500477ACD /* _PurchaseHistoryModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5677C55C2181226400477ACD /* _PurchaseHistoryModelObject.m */; };
 		5677C58F2181226500477ACD /* _PurchaseHistoryModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5677C55C2181226400477ACD /* _PurchaseHistoryModelObject.m */; };
-		5677C5902181226500477ACD /* _TokenModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5677C55E2181226400477ACD /* _TokenModelObject.m */; };
 		5677C5912181226500477ACD /* _TokenModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5677C55E2181226400477ACD /* _TokenModelObject.m */; };
 		5677C5922181226500477ACD /* AccountPlainObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5677C5612181226400477ACD /* AccountPlainObject.m */; };
 		5677C5932181226500477ACD /* AccountPlainObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5677C5612181226400477ACD /* AccountPlainObject.m */; };
@@ -598,14 +587,9 @@
 		56E3E57821016DB60014152D /* HomeRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C1964AC5C3634BFC5E30471 /* HomeRouter.m */; };
 		56E3E57921016DB60014152D /* MEWMappingProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 560CB004209B44A500BFF59C /* MEWMappingProvider.m */; };
 		56E3E57A21016DB60014152D /* SimplexBodyTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 56E14BEA20EBCED900C41F83 /* SimplexBodyTransformer.m */; };
-		56E3E57B21016DB60014152D /* QRScannerAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 3769858708FA853EBEE605C3 /* QRScannerAssembly.m */; };
-		56E3E57C21016DB60014152D /* QRScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6DF4713EBC024BD47A9633 /* QRScannerViewController.m */; };
 		56E3E57D21016DB60014152D /* Array+UInt32.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564387A220A496290017790F /* Array+UInt32.swift */; };
-		56E3E57E21016DB60014152D /* QRScannerPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 15794B62592271A0BE751A96 /* QRScannerPresenter.m */; };
-		56E3E57F21016DB60014152D /* QRScannerInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = FEED18D75495ACE2FEB57B47 /* QRScannerInteractor.m */; };
 		56E3E58021016DB60014152D /* SingleResponseValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 56FB39C020B2313E007776C8 /* SingleResponseValidator.m */; };
 		56E3E58121016DB60014152D /* OperationSchedulerImplementation.m in Sources */ = {isa = PBXBuildFile; fileRef = 56FB391C20B1A228007776C8 /* OperationSchedulerImplementation.m */; };
-		56E3E58221016DB60014152D /* QRScannerRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 10704F14617B1B50992AA214 /* QRScannerRouter.m */; };
 		56E3E58321016DB60014152D /* CheckboxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563C6AE220AF122000E85B8B /* CheckboxButton.swift */; };
 		56E3E58421016DB60014152D /* TokensBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 56FB3A1920B391B4007776C8 /* TokensBody.m */; };
 		56E3E58521016DB60014152D /* NSString+RCFCapitalization.m in Sources */ = {isa = PBXBuildFile; fileRef = 560CB008209B453600BFF59C /* NSString+RCFCapitalization.m */; };
@@ -904,7 +888,6 @@
 		5DDE7C226EB18636AC677057 /* NewWalletInteractorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA7829EF61FC9BE39851079 /* NewWalletInteractorTests.m */; };
 		5F2E9575DE804FDD31175F30 /* MessageSignerAssemblyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 03A0EEC9968CF88987C2AF8A /* MessageSignerAssemblyTests.m */; };
 		5FEF304FAB4A717221A0C324 /* HomeAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 638FC6001B7B3B152737B788 /* HomeAssembly.m */; };
-		6032F005DDCDCFECB265AEBF /* QRScannerInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = FEED18D75495ACE2FEB57B47 /* QRScannerInteractor.m */; };
 		60FB3D00ACA2D174F3CFD75C /* TransactionRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = DE19B77BC071D535CDE08E74 /* TransactionRouter.m */; };
 		62FB6F31985FC1641D2C06E7 /* SplashPasswordPresenterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C00C01BEF7A4B19C3D61D70F /* SplashPasswordPresenterTests.m */; };
 		63563E3B06AA484F7C04B944 /* ConfirmationNavigationViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A9A156D3B1B02F7501A1A0A5 /* ConfirmationNavigationViewControllerTests.m */; };
@@ -916,7 +899,6 @@
 		65F9608962FCE22A5DB9B69B /* HomeViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E73955D85CC02202D1D00574 /* HomeViewControllerTests.m */; };
 		666B9C38833B024733CF5DB7 /* BuyEtherWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8781BB1CCB445088FBD04636 /* BuyEtherWebViewController.m */; };
 		669C06D658A079AB650AD485 /* BackupDoneRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8894473D90C1A6C93DAB964A /* BackupDoneRouter.m */; };
-		67CD1448F27E95D6917799B2 /* QRScannerPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 15794B62592271A0BE751A96 /* QRScannerPresenter.m */; };
 		67E3B80B702FB1A5CBC91D10 /* TransactionInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 5091428889762ADEF364A1C0 /* TransactionInteractor.m */; };
 		6887DA69485B101F7D36B1A1 /* InfoRouterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0743FD26D9DF19E2A8223FF1 /* InfoRouterTests.m */; };
 		68EB2DB032D693B7CD6B0B4C /* SettingsInteractorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 031D8F420D269D8ED3C9C22C /* SettingsInteractorTests.m */; };
@@ -958,6 +940,24 @@
 		87F2A65AA0B29769A37E6AC5 /* TransactionViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C4881520C760669F0444CA9 /* TransactionViewControllerTests.m */; };
 		8A6DA4A53D480287BB1450A9 /* RestoreSafetyPresenterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C083EBF2E8DAA253E84F1C3E /* RestoreSafetyPresenterTests.m */; };
 		8ADED5E6C407D3EB936115B6 /* NewWalletPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = D905F04DFDEB151B54272982 /* NewWalletPresenter.m */; };
+		8D02FE90236FCAD600058486 /* AvaWalletOperationFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D02FE8F236FCAD600058486 /* AvaWalletOperationFactory.m */; };
+		8D02FE942370CE3100058486 /* AvaWalletBodyTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D02FE932370CE3100058486 /* AvaWalletBodyTransformer.m */; };
+		8D02FE992370D69E00058486 /* AvaWalletServiceImplementation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D02FE982370D69E00058486 /* AvaWalletServiceImplementation.m */; };
+		8D045D2D23A1AA90008C670F /* AvaTransactionAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D045D2C23A1AA90008C670F /* AvaTransactionAssembly.m */; };
+		8D045D3123A1AC47008C670F /* AvaTransactionRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D045D3023A1AC47008C670F /* AvaTransactionRouter.m */; };
+		8D045D3423A95412008C670F /* AddressModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D045D3323A95412008C670F /* AddressModelObject.m */; };
+		8D045D3923AA86D2008C670F /* QRScannerAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D045D3823AA86D2008C670F /* QRScannerAssembly.m */; };
+		8D045D3D23AA86E8008C670F /* QRScannerAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D045D3C23AA86E8008C670F /* QRScannerAssembly.m */; };
+		8D42D4E1239B5C8600E7ACEC /* AvaTransactionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D42D4DF239B5C8500E7ACEC /* AvaTransactionViewController.m */; };
+		8D42D4E7239B63D800E7ACEC /* AvaTransactionPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D42D4E6239B63D800E7ACEC /* AvaTransactionPresenter.m */; };
+		8D42D4F2239B7EAB00E7ACEC /* AvaTransactionInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D42D4F1239B7EAB00E7ACEC /* AvaTransactionInteractor.m */; };
+		8D5D76E2238075B40050CA7D /* AvaWalletService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5D76E1238075B40050CA7D /* AvaWalletService.m */; };
+		8D5D77612390C2220050CA7D /* QRScannerPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5D774A2390C2210050CA7D /* QRScannerPresenter.m */; };
+		8D5D77622390C2220050CA7D /* QRScannerInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5D774F2390C2210050CA7D /* QRScannerInteractor.m */; };
+		8D5D77632390C2220050CA7D /* QRScannerRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5D77532390C2210050CA7D /* QRScannerRouter.m */; };
+		8D5D77642390C2220050CA7D /* QRScannerAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5D77582390C2220050CA7D /* QRScannerAssembly.m */; };
+		8D5D77652390C2220050CA7D /* QRScannerStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5D775C2390C2220050CA7D /* QRScannerStatusView.m */; };
+		8D5D77662390C2220050CA7D /* QRScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5D77602390C2220050CA7D /* QRScannerViewController.m */; };
 		8E1E33F40817D6F08E52E343 /* RestoreOptionsViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D184966C2A624B41DD437AC /* RestoreOptionsViewControllerTests.m */; };
 		8E5475167E0D8DD0FBB5B179 /* RestoreSeedRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = DA14E09AB27781606300BEC2 /* RestoreSeedRouter.m */; };
 		8EC87B0DC8D53CE51DD2BDAE /* RestoreSafetyInteractorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F46197552FD5ED7987CBA79F /* RestoreSafetyInteractorTests.m */; };
@@ -1151,7 +1151,6 @@
 		0ED79A5613F6AE459FFAD584 /* BuyEtherHistoryRouter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = BuyEtherHistoryRouter.h; sourceTree = "<group>"; };
 		0F21F55B6F6C8C6775F4CE10 /* ContextPasswordRouterInput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ContextPasswordRouterInput.h; sourceTree = "<group>"; };
 		101884EBBDDA4631EC6180C2 /* SettingsPresenter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SettingsPresenter.h; sourceTree = "<group>"; };
-		10704F14617B1B50992AA214 /* QRScannerRouter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = QRScannerRouter.m; sourceTree = "<group>"; };
 		10DFB3A8A29658A337BA0F97 /* ShareAssembly.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ShareAssembly.m; sourceTree = "<group>"; };
 		1110F3D154655B85356D0D34 /* SettingsAssemblyTests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SettingsAssemblyTests.m; sourceTree = "<group>"; };
 		11BC1BBEDE8EA3D17C7BE276 /* NewWalletInteractorOutput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = NewWalletInteractorOutput.h; sourceTree = "<group>"; };
@@ -1165,7 +1164,6 @@
 		14751018E7A7727D7CC6487C /* BuyEtherHistoryAssemblyTests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = BuyEtherHistoryAssemblyTests.m; sourceTree = "<group>"; };
 		14BD96EBD2270368F62EBDB7 /* RestorePrepareAssembly.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RestorePrepareAssembly.h; sourceTree = "<group>"; };
 		15329632DA925CA5D96E5E19 /* TransactionPresenterTests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TransactionPresenterTests.m; sourceTree = "<group>"; };
-		15794B62592271A0BE751A96 /* QRScannerPresenter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = QRScannerPresenter.m; sourceTree = "<group>"; };
 		157FE28D61B3D3750D3E2BF6 /* ForgotPasswordAssemblyTests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ForgotPasswordAssemblyTests.m; sourceTree = "<group>"; };
 		15B46BE37EBEB54462B7A20C /* RestoreSafetyAssembly.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RestoreSafetyAssembly.m; sourceTree = "<group>"; };
 		15BCC84ADA1F21A4EB3BD953 /* BackupDoneInteractor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = BackupDoneInteractor.m; sourceTree = "<group>"; };
@@ -1192,7 +1190,6 @@
 		1DAB2A7857952022D09D33FD /* RestoreSeedInteractorOutput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RestoreSeedInteractorOutput.h; sourceTree = "<group>"; };
 		1DCFE3BAFF7EEC4E746F3EBF /* SplashPasswordInteractor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SplashPasswordInteractor.m; sourceTree = "<group>"; };
 		1E9498D20276734A2C72594D /* ContextPasswordInteractor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ContextPasswordInteractor.m; sourceTree = "<group>"; };
-		1EAE07A834138BF5E990A2DC /* QRScannerInteractorOutput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = QRScannerInteractorOutput.h; sourceTree = "<group>"; };
 		1EB8C6C8468F30D0722BE586 /* BackupStartRouter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = BackupStartRouter.h; sourceTree = "<group>"; };
 		1F156435ECD7C5978F852A39 /* BackupConfirmationPresenter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = BackupConfirmationPresenter.m; sourceTree = "<group>"; };
 		1F910C8CC283FEA75480826F /* BuyEtherNavigationRouter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = BuyEtherNavigationRouter.m; sourceTree = "<group>"; };
@@ -1205,7 +1202,6 @@
 		220F455C1253BA45232C6F8C /* RestoreSeedAssemblyTests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RestoreSeedAssemblyTests.m; sourceTree = "<group>"; };
 		225F2D921CF51DB246FB5AC9 /* RestoreSeedPresenterTests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RestoreSeedPresenterTests.m; sourceTree = "<group>"; };
 		22B6352F56A3E722B69F7748 /* ContextPasswordInteractorOutput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ContextPasswordInteractorOutput.h; sourceTree = "<group>"; };
-		22DCFD55520AB5E4268B81DF /* QRScannerInteractorInput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = QRScannerInteractorInput.h; sourceTree = "<group>"; };
 		238069D651D77E7B2CA5A751 /* BuyEtherHistoryPresenter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = BuyEtherHistoryPresenter.m; sourceTree = "<group>"; };
 		2392DFB21FCD7ABC9823B98D /* RestoreOptionsRouter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RestoreOptionsRouter.m; sourceTree = "<group>"; };
 		23F7E3C1A73EF34FC92A2AC0 /* BackupWordsInteractorInput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = BackupWordsInteractorInput.h; sourceTree = "<group>"; };
@@ -1267,7 +1263,6 @@
 		36BDE0CA100653BBB160EA8B /* ContextPasswordRouter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ContextPasswordRouter.h; sourceTree = "<group>"; };
 		372273DB086EC9D3C46C9B9C /* ConfirmedTransactionAssembly.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ConfirmedTransactionAssembly.h; sourceTree = "<group>"; };
 		375ED9098438442E19A77B4A /* ConfirmationNavigationAssembly_Testable.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ConfirmationNavigationAssembly_Testable.h; sourceTree = "<group>"; };
-		3769858708FA853EBEE605C3 /* QRScannerAssembly.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = QRScannerAssembly.m; sourceTree = "<group>"; };
 		37EC917E4DE8F02BE733D864 /* RestoreWalletRouter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RestoreWalletRouter.m; sourceTree = "<group>"; };
 		381EB0B9A8422C6132EDCD26 /* BuyEtherHistoryRouter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = BuyEtherHistoryRouter.m; sourceTree = "<group>"; };
 		3838E2266E67A6E690767F7F /* StartRouterInput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = StartRouterInput.h; sourceTree = "<group>"; };
@@ -1277,7 +1272,6 @@
 		3A4CA9764FA3996485E6B116 /* SplashPasswordViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SplashPasswordViewController.h; sourceTree = "<group>"; };
 		3A5832B5412D36A5E81636FA /* RestoreWalletPresenter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RestoreWalletPresenter.h; sourceTree = "<group>"; };
 		3AF26F578BC500D996EB488B /* InfoInteractorTests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = InfoInteractorTests.m; sourceTree = "<group>"; };
-		3AFAA027F77FE95F62F68475 /* QRScannerRouterInput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = QRScannerRouterInput.h; sourceTree = "<group>"; };
 		3B33879DA397717A601384CA /* NewWalletAssembly_Testable.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = NewWalletAssembly_Testable.h; sourceTree = "<group>"; };
 		3B6AB83B0783280B758C104B /* TransactionInteractorInput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TransactionInteractorInput.h; sourceTree = "<group>"; };
 		3BC25EE324E6C73C8B452CCD /* RestoreWalletInteractorOutput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RestoreWalletInteractorOutput.h; sourceTree = "<group>"; };
@@ -1318,7 +1312,6 @@
 		4862E32C35521FB6A5C04492 /* HomePresenter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = HomePresenter.m; sourceTree = "<group>"; };
 		492C1C7F6C635F6F763A7266 /* HomeInteractor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = HomeInteractor.m; sourceTree = "<group>"; };
 		49489D74985D76A32B9CC757 /* AboutInteractor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AboutInteractor.h; sourceTree = "<group>"; };
-		49D5232F4E8E211EB6651BEE /* QRScannerModuleInput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = QRScannerModuleInput.h; sourceTree = "<group>"; };
 		49E25473B847DFA074D8A45F /* BackupConfirmationRouter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = BackupConfirmationRouter.m; sourceTree = "<group>"; };
 		4A180B7DF0178BBA221D9D87 /* ContextPasswordAssembly.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ContextPasswordAssembly.h; sourceTree = "<group>"; };
 		4A6F0E54306C92A9DF040D9A /* ShareViewOutput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ShareViewOutput.h; sourceTree = "<group>"; };
@@ -1527,8 +1520,6 @@
 		5658516022497F4C006AEC7E /* MEWconnect.v.3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MEWconnect.v.3.xcdatamodel; sourceTree = "<group>"; };
 		5658516122497F9C006AEC7E /* MappingModel_v_2_to_3.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = MappingModel_v_2_to_3.xcmappingmodel; sourceTree = "<group>"; };
 		565935FC5198CFB42639DA1E /* BuyEtherHistoryViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = BuyEtherHistoryViewController.m; sourceTree = "<group>"; };
-		56594465224167D800C9BD82 /* QRScannerStatusView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QRScannerStatusView.h; sourceTree = "<group>"; };
-		56594466224167D800C9BD82 /* QRScannerStatusView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QRScannerStatusView.m; sourceTree = "<group>"; };
 		5659447122417DE200C9BD82 /* UIStringList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIStringList.h; sourceTree = "<group>"; };
 		5659447222417DE200C9BD82 /* UIStringList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIStringList.m; sourceTree = "<group>"; };
 		5659447822417EAB00C9BD82 /* WalletUIStringList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WalletUIStringList.h; sourceTree = "<group>"; };
@@ -2082,7 +2073,6 @@
 		66C146259578DAEB115671CB /* ConfirmationNavigationViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ConfirmationNavigationViewController.h; sourceTree = "<group>"; };
 		6765B7A02E6227C2A5247040 /* RestoreOptionsViewOutput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RestoreOptionsViewOutput.h; sourceTree = "<group>"; };
 		67BBD72C212E5F0C7F100132 /* RestoreOptionsInteractor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RestoreOptionsInteractor.h; sourceTree = "<group>"; };
-		683E8F3B0035BFE651D67160 /* QRScannerViewOutput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = QRScannerViewOutput.h; sourceTree = "<group>"; };
 		6935F9C5FD28B770EF33796A /* ShareRouter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ShareRouter.h; sourceTree = "<group>"; };
 		697F6514256FAF8BE3C583AD /* BackupStartAssemblyTests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = BackupStartAssemblyTests.m; sourceTree = "<group>"; };
 		69E4C6D1689B6409DD5A65A1 /* Pods-MEWconnect-MyEtherWallet-iOS-Beta.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MEWconnect-MyEtherWallet-iOS-Beta.appstore.xcconfig"; path = "Pods/Target Support Files/Pods-MEWconnect-MyEtherWallet-iOS-Beta/Pods-MEWconnect-MyEtherWallet-iOS-Beta.appstore.xcconfig"; sourceTree = "<group>"; };
@@ -2113,7 +2103,6 @@
 		74FFAFDF6521E7EF01E8EDB8 /* Pods-MEWconnect-MyEtherWallet-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MEWconnect-MyEtherWallet-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-MEWconnect-MyEtherWallet-iOS/Pods-MEWconnect-MyEtherWallet-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		7530E81B4FB49B75557FB3C2 /* BuyEtherWebAssembly.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = BuyEtherWebAssembly.m; sourceTree = "<group>"; };
 		75498642349514A17A602F1F /* RestoreOptionsInteractorTests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RestoreOptionsInteractorTests.m; sourceTree = "<group>"; };
-		7610C50B19616A7725F9C226 /* QRScannerPresenter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = QRScannerPresenter.h; sourceTree = "<group>"; };
 		7742726E651624A0123B8349 /* BuyEtherNavigationInteractorTests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = BuyEtherNavigationInteractorTests.m; sourceTree = "<group>"; };
 		777B7C1F7DEC57609D0B7D68 /* InfoRouter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = InfoRouter.m; sourceTree = "<group>"; };
 		79089C91D2DA79501F78A963 /* BackupInfoInteractorOutput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = BackupInfoInteractorOutput.h; sourceTree = "<group>"; };
@@ -2179,9 +2168,57 @@
 		8B4184F09C0D55C4BFE7B2D2 /* NewWalletRouter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = NewWalletRouter.h; sourceTree = "<group>"; };
 		8BF8DC90720CEA796BA7F3B2 /* TransactionModuleInput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TransactionModuleInput.h; sourceTree = "<group>"; };
 		8CC721C4349796A3F8A4026D /* NewWalletViewControllerTests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = NewWalletViewControllerTests.m; sourceTree = "<group>"; };
+		8D02FE8E236FCA7800058486 /* AvaWalletOperationFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AvaWalletOperationFactory.h; sourceTree = "<group>"; };
+		8D02FE8F236FCAD600058486 /* AvaWalletOperationFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AvaWalletOperationFactory.m; sourceTree = "<group>"; };
+		8D02FE922370CE1E00058486 /* AvaWalletBodyTransformer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AvaWalletBodyTransformer.h; sourceTree = "<group>"; };
+		8D02FE932370CE3100058486 /* AvaWalletBodyTransformer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AvaWalletBodyTransformer.m; sourceTree = "<group>"; };
+		8D02FE962370D40E00058486 /* AvaWalletService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AvaWalletService.h; sourceTree = "<group>"; };
+		8D02FE972370D68800058486 /* AvaWalletServiceImplementation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AvaWalletServiceImplementation.h; sourceTree = "<group>"; };
+		8D02FE982370D69E00058486 /* AvaWalletServiceImplementation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AvaWalletServiceImplementation.m; sourceTree = "<group>"; };
+		8D045D2C23A1AA90008C670F /* AvaTransactionAssembly.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AvaTransactionAssembly.m; sourceTree = "<group>"; };
+		8D045D2E23A1AA9D008C670F /* AvaTransactionAssembly.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AvaTransactionAssembly.h; sourceTree = "<group>"; };
+		8D045D2F23A1AC37008C670F /* AvaTransactionRouterInput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AvaTransactionRouterInput.h; sourceTree = "<group>"; };
+		8D045D3023A1AC47008C670F /* AvaTransactionRouter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AvaTransactionRouter.m; sourceTree = "<group>"; };
+		8D045D3323A95412008C670F /* AddressModelObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressModelObject.m; sourceTree = "<group>"; };
+		8D045D3523A9542C008C670F /* AddressModelObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressModelObject.h; sourceTree = "<group>"; };
+		8D045D3723AA86D2008C670F /* QRScannerAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRScannerAssembly.h; sourceTree = "<group>"; };
+		8D045D3823AA86D2008C670F /* QRScannerAssembly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRScannerAssembly.m; sourceTree = "<group>"; };
+		8D045D3B23AA86E8008C670F /* QRScannerAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRScannerAssembly.h; sourceTree = "<group>"; };
+		8D045D3C23AA86E8008C670F /* QRScannerAssembly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRScannerAssembly.m; sourceTree = "<group>"; };
 		8D1413D1815E1FFE3C499180 /* BuyEtherAmountRouter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = BuyEtherAmountRouter.h; sourceTree = "<group>"; };
 		8D3702CA37805F4458A2B7B9 /* ConfirmedTransactionRouter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ConfirmedTransactionRouter.h; sourceTree = "<group>"; };
 		8D3D83CE195EBBDA38420C38 /* BackupStartAssembly.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = BackupStartAssembly.m; sourceTree = "<group>"; };
+		8D42D4DF239B5C8500E7ACEC /* AvaTransactionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvaTransactionViewController.m; sourceTree = "<group>"; };
+		8D42D4E0239B5C8600E7ACEC /* AvaTransactionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvaTransactionViewController.h; sourceTree = "<group>"; };
+		8D42D4E3239B5E2700E7ACEC /* AvaTransactionModuleInput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AvaTransactionModuleInput.h; sourceTree = "<group>"; };
+		8D42D4E5239B63C300E7ACEC /* AvaTransactionPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AvaTransactionPresenter.h; sourceTree = "<group>"; };
+		8D42D4E6239B63D800E7ACEC /* AvaTransactionPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AvaTransactionPresenter.m; sourceTree = "<group>"; };
+		8D42D4EA239B650300E7ACEC /* AvaTransactionRouter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AvaTransactionRouter.h; sourceTree = "<group>"; };
+		8D42D4EC239B657000E7ACEC /* AvaTransactionInteractorInput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AvaTransactionInteractorInput.h; sourceTree = "<group>"; };
+		8D42D4ED239B658100E7ACEC /* AvaTransactionInteractorOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AvaTransactionInteractorOutput.h; sourceTree = "<group>"; };
+		8D42D4EE239B659300E7ACEC /* AvaTransactionInteractor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AvaTransactionInteractor.h; sourceTree = "<group>"; };
+		8D42D4EF239B65BE00E7ACEC /* AvaTransactionViewInput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AvaTransactionViewInput.h; sourceTree = "<group>"; };
+		8D42D4F0239B65E500E7ACEC /* AvaTransactionViewOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AvaTransactionViewOutput.h; sourceTree = "<group>"; };
+		8D42D4F1239B7EAB00E7ACEC /* AvaTransactionInteractor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AvaTransactionInteractor.m; sourceTree = "<group>"; };
+		8D5D76E1238075B40050CA7D /* AvaWalletService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AvaWalletService.m; sourceTree = "<group>"; };
+		8D5D774A2390C2210050CA7D /* QRScannerPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRScannerPresenter.m; sourceTree = "<group>"; };
+		8D5D774B2390C2210050CA7D /* QRScannerPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRScannerPresenter.h; sourceTree = "<group>"; };
+		8D5D774C2390C2210050CA7D /* QRScannerModuleInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRScannerModuleInput.h; sourceTree = "<group>"; };
+		8D5D774E2390C2210050CA7D /* QRScannerInteractorOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRScannerInteractorOutput.h; sourceTree = "<group>"; };
+		8D5D774F2390C2210050CA7D /* QRScannerInteractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRScannerInteractor.m; sourceTree = "<group>"; };
+		8D5D77502390C2210050CA7D /* QRScannerInteractorInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRScannerInteractorInput.h; sourceTree = "<group>"; };
+		8D5D77512390C2210050CA7D /* QRScannerInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRScannerInteractor.h; sourceTree = "<group>"; };
+		8D5D77532390C2210050CA7D /* QRScannerRouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRScannerRouter.m; sourceTree = "<group>"; };
+		8D5D77542390C2210050CA7D /* QRScannerRouterInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRScannerRouterInput.h; sourceTree = "<group>"; };
+		8D5D77552390C2210050CA7D /* QRScannerRouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRScannerRouter.h; sourceTree = "<group>"; };
+		8D5D77572390C2220050CA7D /* QRScannerAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRScannerAssembly.h; sourceTree = "<group>"; };
+		8D5D77582390C2220050CA7D /* QRScannerAssembly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRScannerAssembly.m; sourceTree = "<group>"; };
+		8D5D775B2390C2220050CA7D /* QRScannerStatusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRScannerStatusView.h; sourceTree = "<group>"; };
+		8D5D775C2390C2220050CA7D /* QRScannerStatusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRScannerStatusView.m; sourceTree = "<group>"; };
+		8D5D775D2390C2220050CA7D /* QRScannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRScannerViewController.h; sourceTree = "<group>"; };
+		8D5D775E2390C2220050CA7D /* QRScannerViewOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRScannerViewOutput.h; sourceTree = "<group>"; };
+		8D5D775F2390C2220050CA7D /* QRScannerViewInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRScannerViewInput.h; sourceTree = "<group>"; };
+		8D5D77602390C2220050CA7D /* QRScannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRScannerViewController.m; sourceTree = "<group>"; };
 		8DF13D0699F344404CA3EAD7 /* ConfirmPasswordPresenter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ConfirmPasswordPresenter.h; sourceTree = "<group>"; };
 		8EB91379A6ACAC6BC1C13DDC /* SplashPasswordRouter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SplashPasswordRouter.h; sourceTree = "<group>"; };
 		8EFA382B4E3DA2A3C09C6C61 /* ConfirmPasswordInteractor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ConfirmPasswordInteractor.h; sourceTree = "<group>"; };
@@ -2232,7 +2269,6 @@
 		9D9ECCB4B0A77FE924911331 /* StartInteractor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = StartInteractor.m; sourceTree = "<group>"; };
 		9DEB0B91F0BB04C592103F14 /* BuyEtherHistoryPresenterTests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = BuyEtherHistoryPresenterTests.m; sourceTree = "<group>"; };
 		9DEF74034DBEA36B30ABEA20 /* BackupStartPresenterTests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = BackupStartPresenterTests.m; sourceTree = "<group>"; };
-		9E3E3A5555D4B0F411E43454 /* QRScannerAssembly.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = QRScannerAssembly.h; sourceTree = "<group>"; };
 		9E51288AB632D0D5D2269C08 /* ShareInteractor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ShareInteractor.m; sourceTree = "<group>"; };
 		9EEB96B2E6146F0653C13C21 /* NewWalletInteractor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = NewWalletInteractor.h; sourceTree = "<group>"; };
 		9EF33BD879996338B9D56BAE /* ForgotPasswordViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ForgotPasswordViewController.h; sourceTree = "<group>"; };
@@ -2264,7 +2300,6 @@
 		A84E1AF8E18F852FB9AE756D /* BuyEtherWebViewControllerTests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = BuyEtherWebViewControllerTests.m; sourceTree = "<group>"; };
 		A93ADA61F5DD41279CA1382E /* BuyEtherWebAssembly.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = BuyEtherWebAssembly.h; sourceTree = "<group>"; };
 		A9A156D3B1B02F7501A1A0A5 /* ConfirmationNavigationViewControllerTests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ConfirmationNavigationViewControllerTests.m; sourceTree = "<group>"; };
-		AA6DF4713EBC024BD47A9633 /* QRScannerViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = QRScannerViewController.m; sourceTree = "<group>"; };
 		AAF500170FA8158A9FFC40BD /* ShareInteractorInput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ShareInteractorInput.h; sourceTree = "<group>"; };
 		ABD4E433684E1D6237A7BBC0 /* AboutPresenter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = AboutPresenter.m; sourceTree = "<group>"; };
 		ABD7D60CA05AAC656ECB2E7F /* BuyEtherWebPresenter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = BuyEtherWebPresenter.h; sourceTree = "<group>"; };
@@ -2346,7 +2381,6 @@
 		C956F9DBD8DCB174F1499B5B /* SharePresenter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SharePresenter.h; sourceTree = "<group>"; };
 		C95AF3BC10B1C7ADF5E1A2CD /* RestoreSeedInteractor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RestoreSeedInteractor.h; sourceTree = "<group>"; };
 		C95C7A53524C8FE90192C70D /* InfoViewControllerTests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = InfoViewControllerTests.m; sourceTree = "<group>"; };
-		CA12B5039BED5D38878D8AF8 /* QRScannerViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = QRScannerViewController.h; sourceTree = "<group>"; };
 		CA25B4B1B52A39E96D2E52AB /* BackupWordsAssembly.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = BackupWordsAssembly.m; sourceTree = "<group>"; };
 		CA313CF2020E19E7A94D62E5 /* ConfirmedTransactionInteractorOutput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ConfirmedTransactionInteractorOutput.h; sourceTree = "<group>"; };
 		CB548FF334AED83FA24326A9 /* QRScannerRouterTests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = QRScannerRouterTests.m; sourceTree = "<group>"; };
@@ -2366,7 +2400,6 @@
 		CEA79BD201BC72F879344FC2 /* BackupConfirmationViewOutput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = BackupConfirmationViewOutput.h; sourceTree = "<group>"; };
 		CF0A296F529280EC94D06EC6 /* RestoreWalletInteractor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RestoreWalletInteractor.h; sourceTree = "<group>"; };
 		CF6DEE7C6355EE44AC9910CC /* HomeViewInput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = HomeViewInput.h; sourceTree = "<group>"; };
-		CF8D322054C24DE60D510B23 /* QRScannerInteractor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = QRScannerInteractor.h; sourceTree = "<group>"; };
 		CFB70AD93A325EDAB225CFA1 /* Pods-MyEtherWallet-iOSTests.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyEtherWallet-iOSTests.appstore.xcconfig"; path = "Pods/Target Support Files/Pods-MyEtherWallet-iOSTests/Pods-MyEtherWallet-iOSTests.appstore.xcconfig"; sourceTree = "<group>"; };
 		D0B06E65239CE9833F345D4D /* BuyEtherAmountViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = BuyEtherAmountViewController.h; sourceTree = "<group>"; };
 		D0B488D63CB0C571E19ADBFF /* BackupInfoAssembly.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = BackupInfoAssembly.h; sourceTree = "<group>"; };
@@ -2407,7 +2440,6 @@
 		DEDD306C869E9F74BB31A6FE /* ConfirmPasswordViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ConfirmPasswordViewController.h; sourceTree = "<group>"; };
 		DFC592567F5EAB2F84E9D89E /* BuyEtherNavigationViewInput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = BuyEtherNavigationViewInput.h; sourceTree = "<group>"; };
 		DFD571BFA7257D25D6C3D624 /* RestorePrepareModuleInput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RestorePrepareModuleInput.h; sourceTree = "<group>"; };
-		E047CA6FCDA983D0D91E9F74 /* QRScannerViewInput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = QRScannerViewInput.h; sourceTree = "<group>"; };
 		E06EF4FC27EA9AECBABAEA4B /* ConfirmPasswordPresenter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ConfirmPasswordPresenter.m; sourceTree = "<group>"; };
 		E07D240F2163D0D7E4B4A890 /* ConfirmedTransactionRouter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ConfirmedTransactionRouter.m; sourceTree = "<group>"; };
 		E0805CBE13BDCB5B2A34383D /* HomeViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
@@ -2487,7 +2519,6 @@
 		F671D71CC96C3EB4E562A6F0 /* SettingsPresenter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SettingsPresenter.m; sourceTree = "<group>"; };
 		F675C8232F63A26C7FA93485 /* ForgotPasswordAssembly_Testable.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ForgotPasswordAssembly_Testable.h; sourceTree = "<group>"; };
 		F6AB6858075DFD01F37E286A /* PasswordPresenterTests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = PasswordPresenterTests.m; sourceTree = "<group>"; };
-		F6B1678AC1F048DEEA855274 /* QRScannerRouter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = QRScannerRouter.h; sourceTree = "<group>"; };
 		F73FBB40910AD792476FC844 /* ContextPasswordViewControllerTests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ContextPasswordViewControllerTests.m; sourceTree = "<group>"; };
 		F783FD21A0F5532E78F16423 /* BackupConfirmationInteractor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = BackupConfirmationInteractor.m; sourceTree = "<group>"; };
 		F7BD97263E0A4FD60F5D12F3 /* ConfirmPasswordInteractor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ConfirmPasswordInteractor.m; sourceTree = "<group>"; };
@@ -2511,7 +2542,6 @@
 		FE8B5684B7E2BF9E2DC22C3D /* TransactionAssembly_Testable.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TransactionAssembly_Testable.h; sourceTree = "<group>"; };
 		FED3959BF1849A721CBAE4F0 /* InfoRouter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = InfoRouter.h; sourceTree = "<group>"; };
 		FEE7DA917A2FBFA22B176988 /* RestoreSafetyAssembly_Testable.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RestoreSafetyAssembly_Testable.h; sourceTree = "<group>"; };
-		FEED18D75495ACE2FEB57B47 /* QRScannerInteractor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = QRScannerInteractor.m; sourceTree = "<group>"; };
 		FFE3C7864BEF5E722EBBA8C4 /* StartViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = StartViewController.h; sourceTree = "<group>"; };
 		FFEF1ED758EDDCE8DD21F346 /* BackupInfoRouterTests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = BackupInfoRouterTests.m; sourceTree = "<group>"; };
 		FFF133D851CED57D826FD76C /* BackupConfirmationRouterTests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = BackupConfirmationRouterTests.m; sourceTree = "<group>"; };
@@ -2844,16 +2874,6 @@
 				DE14E30D3E3141ACCAE9BAF0 /* RestoreWalletAssembly_Testable.h */,
 			);
 			path = Assembly;
-			sourceTree = "<group>";
-		};
-		139CA226F6F38D114AC8DEBD /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-				49D5232F4E8E211EB6651BEE /* QRScannerModuleInput.h */,
-				7610C50B19616A7725F9C226 /* QRScannerPresenter.h */,
-				15794B62592271A0BE751A96 /* QRScannerPresenter.m */,
-			);
-			path = Presenter;
 			sourceTree = "<group>";
 		};
 		141148CBF7134045E369D408 /* Transaction */ = {
@@ -3327,15 +3347,6 @@
 				C3CF270EFCBD491B804E5192 /* RestoreOptionsInteractor.m */,
 			);
 			path = Interactor;
-			sourceTree = "<group>";
-		};
-		3B3050025313C7B7AE858956 /* Assembly */ = {
-			isa = PBXGroup;
-			children = (
-				9E3E3A5555D4B0F411E43454 /* QRScannerAssembly.h */,
-				3769858708FA853EBEE605C3 /* QRScannerAssembly.m */,
-			);
-			path = Assembly;
 			sourceTree = "<group>";
 		};
 		3B5F9F283C5E5AE7EABC48C0 /* Presenter */ = {
@@ -4652,15 +4663,6 @@
 			path = WhatsNewService;
 			sourceTree = "<group>";
 		};
-		5659446922416F3C00C9BD82 /* StatusView */ = {
-			isa = PBXGroup;
-			children = (
-				56594465224167D800C9BD82 /* QRScannerStatusView.h */,
-				56594466224167D800C9BD82 /* QRScannerStatusView.m */,
-			);
-			path = StatusView;
-			sourceTree = "<group>";
-		};
 		5659446F22417DCF00C9BD82 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
@@ -5155,6 +5157,8 @@
 				5677C5762181226400477ACD /* PurchaseHistoryModelObject.m */,
 				5677C5772181226400477ACD /* TokenModelObject.h */,
 				5677C5782181226400477ACD /* TokenModelObject.m */,
+				8D045D3323A95412008C670F /* AddressModelObject.m */,
+				8D045D3523A9542C008C670F /* AddressModelObject.h */,
 			);
 			path = ManagedObjects;
 			sourceTree = "<group>";
@@ -5387,6 +5391,7 @@
 		569998402095178800D45153 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				8D42D4DD239B5C4600E7ACEC /* AvaTransaction */,
 				53A0700A264E5B4E2D23FE3F /* Settings */,
 				5CDD6B7017DC5EB4A32EFFA4 /* QRScanner */,
 				EA5DD9EF8D3B90B2040E7B4E /* Home */,
@@ -5818,6 +5823,7 @@
 		56AC9435208F76DF00E5BC2C /* ConcreteServices */ = {
 			isa = PBXGroup;
 			children = (
+				8D02FE952370D3A800058486 /* AvaWalletService */,
 				56585158224461A5006AEC7E /* WhatsNewService */,
 				56FFD7F92192482500341D96 /* SecurityService */,
 				56D85B77217FAD1300B474C6 /* MigrationService */,
@@ -6782,6 +6788,7 @@
 		56FB394520B1A8BB007776C8 /* OperationFactories */ = {
 			isa = PBXGroup;
 			children = (
+				8D02FE8D236FC99700058486 /* AvaWalletOperationFactory */,
 				56E14BE020EBCCA800C41F83 /* SimplexOperationFactory */,
 				56E14BC020E97C7900C41F83 /* FiatPricesOperationFactory */,
 				56FB394620B1A8C5007776C8 /* TokensOperationFactory */,
@@ -7299,6 +7306,7 @@
 		56FB39F420B35994007776C8 /* ConcreteClasses */ = {
 			isa = PBXGroup;
 			children = (
+				8D02FE912370CDEB00058486 /* AvaWalletBodyTransformer */,
 				56E14BE820EBCED000C41F83 /* SimplexBodyTransformer */,
 				56FB39F820B359D4007776C8 /* ContractsBodyTransformer */,
 			);
@@ -7548,7 +7556,9 @@
 				E6DF80CE08234D03640AA7B9 /* Pods */,
 				E12C14796412612D37BD2A92 /* Frameworks */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		56FE2B6E20817F1100DB39D5 /* Products */ = {
 			isa = PBXGroup;
@@ -7765,11 +7775,11 @@
 		5CDD6B7017DC5EB4A32EFFA4 /* QRScanner */ = {
 			isa = PBXGroup;
 			children = (
-				3B3050025313C7B7AE858956 /* Assembly */,
-				D77E3F0CEE9DFF59688280A7 /* View */,
-				139CA226F6F38D114AC8DEBD /* Presenter */,
-				C643950EEBC9F278563ED769 /* Interactor */,
-				EE3C5D51BE65DB08287B945D /* Router */,
+				8D5D77562390C2220050CA7D /* Assembly */,
+				8D5D774D2390C2210050CA7D /* Interactor */,
+				8D5D77492390C2210050CA7D /* Presenter */,
+				8D5D77522390C2210050CA7D /* Router */,
+				8D5D77592390C2220050CA7D /* View */,
 			);
 			path = QRScanner;
 			sourceTree = "<group>";
@@ -8447,6 +8457,179 @@
 				01B2C80D354E6C1FCC04CCE5 /* BackupConfirmationPresenterTests.m */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		8D02FE8D236FC99700058486 /* AvaWalletOperationFactory */ = {
+			isa = PBXGroup;
+			children = (
+				8D02FE8E236FCA7800058486 /* AvaWalletOperationFactory.h */,
+				8D02FE8F236FCAD600058486 /* AvaWalletOperationFactory.m */,
+			);
+			path = AvaWalletOperationFactory;
+			sourceTree = "<group>";
+		};
+		8D02FE912370CDEB00058486 /* AvaWalletBodyTransformer */ = {
+			isa = PBXGroup;
+			children = (
+				8D02FE922370CE1E00058486 /* AvaWalletBodyTransformer.h */,
+				8D02FE932370CE3100058486 /* AvaWalletBodyTransformer.m */,
+			);
+			path = AvaWalletBodyTransformer;
+			sourceTree = "<group>";
+		};
+		8D02FE952370D3A800058486 /* AvaWalletService */ = {
+			isa = PBXGroup;
+			children = (
+				8D02FE962370D40E00058486 /* AvaWalletService.h */,
+				8D02FE972370D68800058486 /* AvaWalletServiceImplementation.h */,
+				8D02FE982370D69E00058486 /* AvaWalletServiceImplementation.m */,
+				8D5D76E1238075B40050CA7D /* AvaWalletService.m */,
+			);
+			path = AvaWalletService;
+			sourceTree = "<group>";
+		};
+		8D045D2B23A1AA74008C670F /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				8D045D2C23A1AA90008C670F /* AvaTransactionAssembly.m */,
+				8D045D2E23A1AA9D008C670F /* AvaTransactionAssembly.h */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		8D045D3623AA86D2008C670F /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				8D045D3723AA86D2008C670F /* QRScannerAssembly.h */,
+				8D045D3823AA86D2008C670F /* QRScannerAssembly.m */,
+			);
+			name = Assembly;
+			sourceTree = "<group>";
+		};
+		8D045D3A23AA86E8008C670F /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				8D045D3B23AA86E8008C670F /* QRScannerAssembly.h */,
+				8D045D3C23AA86E8008C670F /* QRScannerAssembly.m */,
+			);
+			name = Assembly;
+			sourceTree = "<group>";
+		};
+		8D42D4DD239B5C4600E7ACEC /* AvaTransaction */ = {
+			isa = PBXGroup;
+			children = (
+				8D045D2B23A1AA74008C670F /* Assembly */,
+				8D42D4E9239B643B00E7ACEC /* Router */,
+				8D42D4E8239B642E00E7ACEC /* Interactor */,
+				8D42D4E2239B5E0600E7ACEC /* Presenter */,
+				8D42D4DE239B5C4F00E7ACEC /* View */,
+			);
+			path = AvaTransaction;
+			sourceTree = "<group>";
+		};
+		8D42D4DE239B5C4F00E7ACEC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8D42D4E0239B5C8600E7ACEC /* AvaTransactionViewController.h */,
+				8D42D4DF239B5C8500E7ACEC /* AvaTransactionViewController.m */,
+				8D42D4EF239B65BE00E7ACEC /* AvaTransactionViewInput.h */,
+				8D42D4F0239B65E500E7ACEC /* AvaTransactionViewOutput.h */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8D42D4E2239B5E0600E7ACEC /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				8D42D4E3239B5E2700E7ACEC /* AvaTransactionModuleInput.h */,
+				8D42D4E5239B63C300E7ACEC /* AvaTransactionPresenter.h */,
+				8D42D4E6239B63D800E7ACEC /* AvaTransactionPresenter.m */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		8D42D4E8239B642E00E7ACEC /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				8D42D4EC239B657000E7ACEC /* AvaTransactionInteractorInput.h */,
+				8D42D4ED239B658100E7ACEC /* AvaTransactionInteractorOutput.h */,
+				8D42D4EE239B659300E7ACEC /* AvaTransactionInteractor.h */,
+				8D42D4F1239B7EAB00E7ACEC /* AvaTransactionInteractor.m */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		8D42D4E9239B643B00E7ACEC /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				8D42D4EA239B650300E7ACEC /* AvaTransactionRouter.h */,
+				8D045D2F23A1AC37008C670F /* AvaTransactionRouterInput.h */,
+				8D045D3023A1AC47008C670F /* AvaTransactionRouter.m */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		8D5D77492390C2210050CA7D /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				8D5D774A2390C2210050CA7D /* QRScannerPresenter.m */,
+				8D5D774B2390C2210050CA7D /* QRScannerPresenter.h */,
+				8D5D774C2390C2210050CA7D /* QRScannerModuleInput.h */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		8D5D774D2390C2210050CA7D /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				8D5D774E2390C2210050CA7D /* QRScannerInteractorOutput.h */,
+				8D5D774F2390C2210050CA7D /* QRScannerInteractor.m */,
+				8D5D77502390C2210050CA7D /* QRScannerInteractorInput.h */,
+				8D5D77512390C2210050CA7D /* QRScannerInteractor.h */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		8D5D77522390C2210050CA7D /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				8D5D77532390C2210050CA7D /* QRScannerRouter.m */,
+				8D5D77542390C2210050CA7D /* QRScannerRouterInput.h */,
+				8D5D77552390C2210050CA7D /* QRScannerRouter.h */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		8D5D77562390C2220050CA7D /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				8D5D77572390C2220050CA7D /* QRScannerAssembly.h */,
+				8D045D3623AA86D2008C670F /* Assembly */,
+				8D5D77582390C2220050CA7D /* QRScannerAssembly.m */,
+				8D045D3A23AA86E8008C670F /* Assembly */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		8D5D77592390C2220050CA7D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8D5D775A2390C2220050CA7D /* StatusView */,
+				8D5D775D2390C2220050CA7D /* QRScannerViewController.h */,
+				8D5D775E2390C2220050CA7D /* QRScannerViewOutput.h */,
+				8D5D775F2390C2220050CA7D /* QRScannerViewInput.h */,
+				8D5D77602390C2220050CA7D /* QRScannerViewController.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8D5D775A2390C2220050CA7D /* StatusView */ = {
+			isa = PBXGroup;
+			children = (
+				8D5D775B2390C2220050CA7D /* QRScannerStatusView.h */,
+				8D5D775C2390C2220050CA7D /* QRScannerStatusView.m */,
+			);
+			path = StatusView;
 			sourceTree = "<group>";
 		};
 		8D7025E8FB19BA41B52B6336 /* Router */ = {
@@ -9271,17 +9454,6 @@
 			path = BuyEtherHistory;
 			sourceTree = "<group>";
 		};
-		C643950EEBC9F278563ED769 /* Interactor */ = {
-			isa = PBXGroup;
-			children = (
-				22DCFD55520AB5E4268B81DF /* QRScannerInteractorInput.h */,
-				1EAE07A834138BF5E990A2DC /* QRScannerInteractorOutput.h */,
-				CF8D322054C24DE60D510B23 /* QRScannerInteractor.h */,
-				FEED18D75495ACE2FEB57B47 /* QRScannerInteractor.m */,
-			);
-			path = Interactor;
-			sourceTree = "<group>";
-		};
 		C69AFC52B8F0F88DD3751C58 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
@@ -9629,18 +9801,6 @@
 				AF74EE5E26AEC3E89BC1DCE2 /* RestoreWalletRouterTests.m */,
 			);
 			path = Router;
-			sourceTree = "<group>";
-		};
-		D77E3F0CEE9DFF59688280A7 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				E047CA6FCDA983D0D91E9F74 /* QRScannerViewInput.h */,
-				683E8F3B0035BFE651D67160 /* QRScannerViewOutput.h */,
-				CA12B5039BED5D38878D8AF8 /* QRScannerViewController.h */,
-				AA6DF4713EBC024BD47A9633 /* QRScannerViewController.m */,
-				5659446922416F3C00C9BD82 /* StatusView */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		D780ECE8EC6A6CCC3E203B49 /* View */ = {
@@ -9993,16 +10153,6 @@
 				C15C6C902168FA1819603A4F /* Router */,
 			);
 			path = RestoreWallet;
-			sourceTree = "<group>";
-		};
-		EE3C5D51BE65DB08287B945D /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				3AFAA027F77FE95F62F68475 /* QRScannerRouterInput.h */,
-				F6B1678AC1F048DEEA855274 /* QRScannerRouter.h */,
-				10704F14617B1B50992AA214 /* QRScannerRouter.m */,
-			);
-			path = Router;
 			sourceTree = "<group>";
 		};
 		EE6FC922E992A98A410E9B3B /* RestoreWallet */ = {
@@ -10943,7 +11093,6 @@
 				56E3E50B21016DB60014152D /* KeychainNetworkModel.m in Sources */,
 				56E3E50C21016DB60014152D /* CleanLaunchAppDelegate.m in Sources */,
 				56E3E50D21016DB60014152D /* UIColor+RandSeed.swift in Sources */,
-				56594468224167D800C9BD82 /* QRScannerStatusView.m in Sources */,
 				56E3E50E21016DB60014152D /* StoryboardsAssembly.m in Sources */,
 				5662E2502147FEB100A3C77E /* ContextPasswordInteractor.m in Sources */,
 				56E3E50F21016DB60014152D /* NSData+Hexadecimal.m in Sources */,
@@ -11071,14 +11220,9 @@
 				56E3E57921016DB60014152D /* MEWMappingProvider.m in Sources */,
 				563D081521F680C80055A963 /* TokensResponseValidator.m in Sources */,
 				56E3E57A21016DB60014152D /* SimplexBodyTransformer.m in Sources */,
-				56E3E57B21016DB60014152D /* QRScannerAssembly.m in Sources */,
-				56E3E57C21016DB60014152D /* QRScannerViewController.m in Sources */,
 				56E3E57D21016DB60014152D /* Array+UInt32.swift in Sources */,
-				56E3E57E21016DB60014152D /* QRScannerPresenter.m in Sources */,
-				56E3E57F21016DB60014152D /* QRScannerInteractor.m in Sources */,
 				56E3E58021016DB60014152D /* SingleResponseValidator.m in Sources */,
 				56E3E58121016DB60014152D /* OperationSchedulerImplementation.m in Sources */,
-				56E3E58221016DB60014152D /* QRScannerRouter.m in Sources */,
 				5677C5B32181226500477ACD /* _PurchaseHistoryPlainObject.m in Sources */,
 				56E3E58321016DB60014152D /* CheckboxButton.swift in Sources */,
 				56E3E58421016DB60014152D /* TokensBody.m in Sources */,
@@ -11320,6 +11464,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D5D77622390C2220050CA7D /* QRScannerInteractor.m in Sources */,
 				5668E4F02083DAC90070A402 /* CleanLaunchRouter.m in Sources */,
 				5677C5A42181226500477ACD /* NetworkModelObject.m in Sources */,
 				56FB3A1E20B43FE6007776C8 /* TokensResponseConverterImplementation.m in Sources */,
@@ -11327,6 +11472,7 @@
 				56FB39BA20B22D7B007776C8 /* ResponseValidatorsAssembly.m in Sources */,
 				56FB39D620B249E9007776C8 /* ContractRequestDataModel.m in Sources */,
 				56FE2B8020817F1100DB39D5 /* main.m in Sources */,
+				8D02FE90236FCAD600058486 /* AvaWalletOperationFactory.m in Sources */,
 				56AC944E208FAB1000E5BC2C /* NSString+HexData.m in Sources */,
 				560D770F20B49522009A3D6D /* HomeTableViewCellObject.m in Sources */,
 				56A4EAC820B8C5EC0042A358 /* PresentationControllerAssembly.m in Sources */,
@@ -11355,7 +11501,6 @@
 				EFF1B135C57BD1034056F8DE /* StartViewController.m in Sources */,
 				560A867520E681E700046B53 /* KeychainNetworkModel.m in Sources */,
 				56F8EAA22183B7F90010274B /* MappingModel_v_1_to_2.xcmappingmodel in Sources */,
-				56594467224167D800C9BD82 /* QRScannerStatusView.m in Sources */,
 				5668E4EA2083DA190070A402 /* CleanLaunchAppDelegate.m in Sources */,
 				5643879720A492240017790F /* UIColor+RandSeed.swift in Sources */,
 				5668E50C2083E7280070A402 /* StoryboardsAssembly.m in Sources */,
@@ -11364,6 +11509,7 @@
 				9545B03A6FC04B1766AA60BF /* StartPresenter.m in Sources */,
 				56E14BBF20E97B3C00C41F83 /* FiatPricesQuery.m in Sources */,
 				56191EAE215052FD000BF97F /* RateServiceImplementation.m in Sources */,
+				8D5D77652390C2220050CA7D /* QRScannerStatusView.m in Sources */,
 				5668E5132083E8290070A402 /* NavigationControllerFactoryImplementation.m in Sources */,
 				56FB391720B1A0B7007776C8 /* TokensServiceImplementation.m in Sources */,
 				560CB022209B6CB200BFF59C /* MEWConnectResponse.m in Sources */,
@@ -11375,6 +11521,7 @@
 				5668E5072083E5CA0070A402 /* ApplicationHelperAssembly.m in Sources */,
 				5691625D2194B85300A58480 /* MnemonicsValidatorImplementation.m in Sources */,
 				560D76F820B48487009A3D6D /* CacheTransactionBatch.m in Sources */,
+				8D42D4F2239B7EAB00E7ACEC /* AvaTransactionInteractor.m in Sources */,
 				56FB394E20B1AA0D007776C8 /* CompoundOperationBuilderConfig.m in Sources */,
 				56FB397520B222FF007776C8 /* RequestConfigurationOperation.m in Sources */,
 				56A4EAB620B8C2610042A358 /* TransitioningDelegateBase.m in Sources */,
@@ -11384,10 +11531,11 @@
 				56FB39A820B22B3B007776C8 /* ResponseConverterImplementation.m in Sources */,
 				56A4EAA020B5D22A0042A358 /* HomeTableView.m in Sources */,
 				56A4EAD320B9A25A0042A358 /* BottomBackgroundedModalPresentationController.m in Sources */,
-				5677C58C2181226500477ACD /* _NetworkModelObject.m in Sources */,
 				56FB3A4F20B46FB1007776C8 /* ManagedObjectMapper.m in Sources */,
 				56E14BC820E97ED200C41F83 /* FiatPricesQueryTransformer.m in Sources */,
+				8D045D3123A1AC47008C670F /* AvaTransactionRouter.m in Sources */,
 				569E51CA20D946B000883583 /* NSData+ArrayBuffer.m in Sources */,
+				8D5D77612390C2220050CA7D /* QRScannerPresenter.m in Sources */,
 				5658515B224461CB006AEC7E /* WhatsNewServiceImplementation.m in Sources */,
 				2A3FFB6DBE3CE8BCA37EC381 /* StartRouter.m in Sources */,
 				56FB398A20B22726007776C8 /* NetworkOperation.m in Sources */,
@@ -11400,7 +11548,6 @@
 				56F17AC420E23FF60010393C /* NSBundle+Version.m in Sources */,
 				56D85B7F217FB42600B474C6 /* MigrationManager.m in Sources */,
 				564952C120E3DEE300CF2348 /* BlockchainNetworkServiceImplementation.m in Sources */,
-				5677C5862181226500477ACD /* _AccountModelObject.m in Sources */,
 				5677C5B02181226500477ACD /* _NetworkPlainObject.m in Sources */,
 				566BD36321389478007EC803 /* MEWConnectMessage.m in Sources */,
 				5668E5012083E4D70070A402 /* SystemInfrastructureAssembly.m in Sources */,
@@ -11411,6 +11558,7 @@
 				56A4FAB92148138D00E7B022 /* FadeModalDismissingAnimationController.m in Sources */,
 				56FB38EE20AF9211007776C8 /* LinkedLabel.m in Sources */,
 				E382C859C6675B6E524BDC87 /* NewWalletAssembly.m in Sources */,
+				8D42D4E1239B5C8600E7ACEC /* AvaTransactionViewController.m in Sources */,
 				56FB399C20B22939007776C8 /* ResponseDeserializationOperation.m in Sources */,
 				56BFD425209BB8CB00951000 /* NSString+HexToDecimal.swift in Sources */,
 				F3BEB5996A9106BD0DE22462 /* NewWalletViewController.m in Sources */,
@@ -11447,6 +11595,7 @@
 				48775C9BF345F555A704F7AC /* PasswordAssembly.m in Sources */,
 				FA71744EB496938426D1BE7E /* PasswordViewController.m in Sources */,
 				56A4EABF20B8C4170042A358 /* BottomModalPresentingAnimationController.m in Sources */,
+				8D045D3D23AA86E8008C670F /* QRScannerAssembly.m in Sources */,
 				56FB39B220B22CF1007776C8 /* ResponseValidationOperation.m in Sources */,
 				49D57D4B9B90BE2E0D07CEB5 /* PasswordPresenter.m in Sources */,
 				56C7757D20DFEBB300451EEF /* InfoNormalTableViewCellObject.m in Sources */,
@@ -11464,6 +11613,7 @@
 				56C878B520BC199300343ADC /* HomeEmptyTableViewCell.m in Sources */,
 				56E14BD420EA687700C41F83 /* NSNumberFormatter+TokenPrice.m in Sources */,
 				56FB3A2320B441C8007776C8 /* UIImage+RandSeed.swift in Sources */,
+				8D02FE942370CE3100058486 /* AvaWalletBodyTransformer.m in Sources */,
 				5627B6F6210A81B7009787F7 /* EthereumResponseValidator.m in Sources */,
 				560D76F020B48296009A3D6D /* PonsomizerAssembly.m in Sources */,
 				5677C5A82181226500477ACD /* TokenModelObject.m in Sources */,
@@ -11473,6 +11623,7 @@
 				3E29FA4D9347F0A161AF1AB8 /* HomeViewController.m in Sources */,
 				563CF2EB20EFAB3D005467AE /* BuyEtherHistoryDataDisplayManager.m in Sources */,
 				56FB39F320B3586C007776C8 /* QueryTransformerBase.m in Sources */,
+				8D045D3923AA86D2008C670F /* QRScannerAssembly.m in Sources */,
 				563C6AD820AC696300E85B8B /* MEWSearchBar.m in Sources */,
 				4BECCB3B960C486BF2D02A9C /* HomePresenter.m in Sources */,
 				56E14C0420EC0C8700C41F83 /* SimplexResponseConverterImplementation.m in Sources */,
@@ -11481,17 +11632,13 @@
 				D9D754DAE5ADEDE854FC750F /* HomeRouter.m in Sources */,
 				560CB005209B44A500BFF59C /* MEWMappingProvider.m in Sources */,
 				56E14BEB20EBCED900C41F83 /* SimplexBodyTransformer.m in Sources */,
-				25976212577886BC56433121 /* QRScannerAssembly.m in Sources */,
-				2EECE31C4CE07345BC160881 /* QRScannerViewController.m in Sources */,
 				564387A320A496290017790F /* Array+UInt32.swift in Sources */,
-				67CD1448F27E95D6917799B2 /* QRScannerPresenter.m in Sources */,
-				6032F005DDCDCFECB265AEBF /* QRScannerInteractor.m in Sources */,
 				5677C59E2181226500477ACD /* AccountModelObject.m in Sources */,
 				56FB39C120B2313E007776C8 /* SingleResponseValidator.m in Sources */,
 				56FB391D20B1A228007776C8 /* OperationSchedulerImplementation.m in Sources */,
 				5677C5B42181226500477ACD /* _TokenPlainObject.m in Sources */,
 				56896BA7221B6B0B00B78FF6 /* RestoreOptionsNormalTableViewCell.m in Sources */,
-				0200A429F6FF43815C7B2AFD /* QRScannerRouter.m in Sources */,
+				8D02FE992370D69E00058486 /* AvaWalletServiceImplementation.m in Sources */,
 				563C6AE320AF122000E85B8B /* CheckboxButton.swift in Sources */,
 				56FB3A1A20B391B4007776C8 /* TokensBody.m in Sources */,
 				560CB009209B453600BFF59C /* NSString+RCFCapitalization.m in Sources */,
@@ -11501,6 +11648,7 @@
 				56FB39FF20B35B33007776C8 /* OperationFactoriesAssembly.m in Sources */,
 				5645258B2164C63A004D23C4 /* TokensResponseValidator.m in Sources */,
 				563DF38520986F8500F740FF /* PasswordTextField.m in Sources */,
+				8D5D77632390C2220050CA7D /* QRScannerRouter.m in Sources */,
 				56E14BF020EBCF3400C41F83 /* SimplexHeadersBuilder.m in Sources */,
 				56A4EAA420B826A50042A358 /* NSCharacterSet+WNS.m in Sources */,
 				564387A620A4A9820017790F /* CGPoint+RandSeed.swift in Sources */,
@@ -11518,6 +11666,7 @@
 				56E684A020A5D4E40058AA38 /* NSNumberFormatter+USD.m in Sources */,
 				560D771A20B495DE009A3D6D /* FetchedResultsControllerAssembly.m in Sources */,
 				67E3B80B702FB1A5CBC91D10 /* TransactionInteractor.m in Sources */,
+				8D045D2D23A1AA90008C670F /* AvaTransactionAssembly.m in Sources */,
 				56FB3A2920B44A05007776C8 /* NSString+Hex.m in Sources */,
 				56FB38FC20B09E6F007776C8 /* MEWConnectFacadeConstants.m in Sources */,
 				5677BB4820FD0A2D0019E92D /* UIScreen+ScreenSizeType.m in Sources */,
@@ -11531,6 +11680,7 @@
 				56E6849C20A5092C0058AA38 /* NSNumberFormatter+Ethereum.m in Sources */,
 				5677C5962181226500477ACD /* MasterTokenPlainObject.m in Sources */,
 				9C68410123433AEA8C27D94A /* DeclinedTransactionPresenter.m in Sources */,
+				8D5D77642390C2220050CA7D /* QRScannerAssembly.m in Sources */,
 				56FB398620B226C9007776C8 /* ServerResponseModel.m in Sources */,
 				5659447A22417EAB00C9BD82 /* WalletUIStringList.m in Sources */,
 				560D772520B49927009A3D6D /* HomeTableViewAnimator.m in Sources */,
@@ -11542,6 +11692,7 @@
 				B9B3DACD03B86B5A8AFC950C /* DeclinedTransactionInteractor.m in Sources */,
 				5695A95A2B5CED358C015C0D /* DeclinedTransactionRouter.m in Sources */,
 				56896B83221B694300B78FF6 /* RestoreOptionsDataDisplayManager.m in Sources */,
+				8D5D77662390C2220050CA7D /* QRScannerViewController.m in Sources */,
 				563CF30A20EFB235005467AE /* BuyEtherHistoryTableViewAnimator.m in Sources */,
 				565944882241826100C9BD82 /* UIStringAttributesProvider.m in Sources */,
 				5677C59C2181226500477ACD /* TokenPlainObject.m in Sources */,
@@ -11552,6 +11703,7 @@
 				56FB395D20B1AEC7007776C8 /* OperationChainer.m in Sources */,
 				56FB394420B1A6D0007776C8 /* OperationBuffer.m in Sources */,
 				56BFD42D20A1D6B500951000 /* UIImage+MEWBackground.m in Sources */,
+				8D045D3423A95412008C670F /* AddressModelObject.m in Sources */,
 				56A29C9920E0625200D05FF1 /* InfoEmptyTableViewCellObject.m in Sources */,
 				560D76EC20B48213009A3D6D /* PonsomizerImplementation.m in Sources */,
 				560CAFF2209B0EC500BFF59C /* Web3Wrapper.swift in Sources */,
@@ -11595,7 +11747,6 @@
 				56FB39DE20B31931007776C8 /* CommonNetworkClient.m in Sources */,
 				56FFD803219250C800341D96 /* UIViewController+Hierarchy.m in Sources */,
 				5677C5982181226500477ACD /* NetworkPlainObject.m in Sources */,
-				5677C58E2181226500477ACD /* _PurchaseHistoryModelObject.m in Sources */,
 				B6DD4E4FEF354C89A482CF6A /* ConfirmedTransactionAssembly.m in Sources */,
 				56FB392220B1A2BD007776C8 /* CompoundOperationBase.m in Sources */,
 				5677C5AA2181226500477ACD /* _AccountPlainObject.m in Sources */,
@@ -11649,7 +11800,6 @@
 				455E984869FF61535DEF1FE7 /* BackupDoneViewController.m in Sources */,
 				5677BB4F20FD0C190019E92D /* UIScreen+ScreenScaleType.m in Sources */,
 				0EAB1B3BAE104F2ED13AFBDA /* BackupDonePresenter.m in Sources */,
-				5677C5882181226500477ACD /* _FiatPriceModelObject.m in Sources */,
 				291642C66A4CCAB3EC91FE67 /* BackupDoneInteractor.m in Sources */,
 				5677C59A2181226500477ACD /* PurchaseHistoryPlainObject.m in Sources */,
 				669C06D658A079AB650AD485 /* BackupDoneRouter.m in Sources */,
@@ -11683,7 +11833,7 @@
 				1EF453B24AD43CAD23B43051 /* BuyEtherAmountPresenter.m in Sources */,
 				5C11FB249B0F3CDE7C466126 /* BuyEtherAmountInteractor.m in Sources */,
 				56335F812187663600C07E2B /* KeychainServiceConstantsV2.m in Sources */,
-				5677C5902181226500477ACD /* _TokenModelObject.m in Sources */,
+				8D5D76E2238075B40050CA7D /* AvaWalletService.m in Sources */,
 				59FC874B1EE56C844A9D5681 /* BuyEtherAmountRouter.m in Sources */,
 				1188B19E148E0E631C68A394 /* BuyEtherHistoryAssembly.m in Sources */,
 				E734FB2A06F7D6E28F813C4A /* BuyEtherHistoryViewController.m in Sources */,
@@ -11695,7 +11845,6 @@
 				305F1DD38D91054D4017098F /* BuyEtherNavigationController.m in Sources */,
 				5677C5A22181226500477ACD /* MasterTokenModelObject.m in Sources */,
 				A30F16618E51D57E2E24EEFA /* BuyEtherNavigationPresenter.m in Sources */,
-				5677C58A2181226500477ACD /* _MasterTokenModelObject.m in Sources */,
 				5677BB4220FAB28C0019E92D /* UIView+LockFrame.m in Sources */,
 				5658513A2242B36B006AEC7E /* ConfirmationUIStringAttributesProvider.m in Sources */,
 				EA0EFB4E115E73BC1B98904C /* BuyEtherNavigationRouter.m in Sources */,
@@ -11729,6 +11878,7 @@
 				56335F8B2187BBC300C07E2B /* KeychainAccountModel.m in Sources */,
 				DF0D46B9486CD04C5E2DD220 /* RestoreSeedAssembly.m in Sources */,
 				F5E3B1945D11158D6038D9A5 /* RestoreSeedViewController.m in Sources */,
+				8D42D4E7239B63D800E7ACEC /* AvaTransactionPresenter.m in Sources */,
 				562DEFB7507802E60DDB1C47 /* RestoreSeedPresenter.m in Sources */,
 				95AC28C33E90E6CB75236EB0 /* RestoreSeedInteractor.m in Sources */,
 				8E5475167E0D8DD0FBB5B179 /* RestoreSeedRouter.m in Sources */,

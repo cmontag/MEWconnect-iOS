@@ -11,8 +11,8 @@
 
 @implementation NSNumberFormatter (Ethereum)
 
-+ (instancetype) ethereumFormatterWithNetwork:(BlockchainNetworkType)network {
-  return [self ethereumFormatterWithCurrencySymbol:[BlockchainNetworkTypesInfoProvider currencySymbolForNetworkType:network]];
++ (instancetype) ethereumFormatterWithNetwork:(NSString *)network {
+  return [self ethereumFormatterWithCurrencySymbol:@"AVA"];
 }
 
 + (instancetype)ethereumFormatterWithCurrencySymbol:(NSString *)currencySymbol {

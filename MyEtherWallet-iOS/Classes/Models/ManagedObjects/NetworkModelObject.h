@@ -1,5 +1,6 @@
-#import "_NetworkModelObject.h"
+#import "Network+CoreDataClass.h"
 
-@interface NetworkModelObject : _NetworkModelObject
+@interface NetworkModelObject : Network
 // Custom logic goes here.
++ (NSString*)entityName;
 @end

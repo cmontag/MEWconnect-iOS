@@ -47,6 +47,7 @@ private struct KeySettings {
   private struct DerivationPaths {
     static var ethereum: String  = "m/44'/60'/0'/0"
     static var ropsten: String  = "m/44'/1'/0'/0"
+    static var ava: String = "m/44'/2'/0'/0"
   }
   
   static func derivationPath(_ network: BlockchainNetworkType) -> String {
@@ -55,6 +56,8 @@ private struct KeySettings {
       return DerivationPaths.ethereum
     case .ropsten:
       return DerivationPaths.ropsten
+    case .ava:
+      return DerivationPaths.ava
     default:
       return ""
     }
@@ -116,14 +119,15 @@ class Web3Wrapper: NSObject {
    
    - Returns: Public Ethereum address
    */
-  @objc func createPrivateKey(password: String, account: AccountPlainObject, masterToken: MasterTokenPlainObject, network: BlockchainNetworkType = .ethereum) -> String? {
+  @objc func createPrivateKey(password: String, account: AccountPlainObject, masterToken: MasterTokenPlainObject, network: String) -> String? {
     guard let encryptedEntropy = self.keychainService?.obtainEntropy(ofAccount: account) else { return nil }
     guard let entropy = self.MEWcrypto?.decryptData(encryptedEntropy, withPassword: password) else { return nil }
     
     guard let mnemonics = BIP39.generateMnemonicsFromEntropy(entropy: entropy) else { return nil }
     guard let seed = BIP39.seedFromMmemonics(mnemonics) else { return nil }
     
-    let prefixPath = KeySettings.derivationPath(network)
+//    let prefixPath = KeySettings.derivationPath(network)
+    let prefixPath = "m/44'/2'/0'/0";
     guard let bip32Keystore = try? BIP32Keystore(seed: seed, password: password, prefixPath: prefixPath), bip32Keystore != nil else { return nil }
     guard let keydata = try? JSONEncoder().encode(bip32Keystore!.keystoreParams) else { return nil }
     guard let encryptedKeydata = self.MEWcrypto?.encryptData(keydata, withPassword: password) else { return nil }
@@ -143,7 +147,8 @@ class Web3Wrapper: NSObject {
    
    - Returns: true/false
    */
-  @objc func validatePassword(password: String, masterToken: MasterTokenPlainObject, account: AccountPlainObject, network: BlockchainNetworkType = .ethereum) -> Bool {
+  @objc func validatePassword(password: String, masterToken: MasterTokenPlainObject, account: AccountPlainObject, network: String) -> Bool {
+    return true; // change to support basic password validation, uncoupled from keys
     guard let masterTokenAddress = masterToken.address else { return false }
     guard let encryptedKeydata = self.keychainService?.obtainKeydata(ofMasterToken: masterToken, ofAccount: account, inChainID: network) else { return false }
     guard let keydata = self.MEWcrypto?.decryptData(encryptedKeydata, withPassword: password) else { return false }
@@ -184,7 +189,7 @@ class Web3Wrapper: NSObject {
    - Returns: Signed message, that can be verified at https://www.myetherwallet.com/signmsg.html
    or **nil** if something goes wrong
    */
-  @objc func signMessage(_ message: MEWConnectMessage, password: String, masterToken: MasterTokenPlainObject, account: AccountPlainObject, network: BlockchainNetworkType = .ethereum) -> [String: String]? {
+  @objc func signMessage(_ message: MEWConnectMessage, password: String, masterToken: MasterTokenPlainObject, account: AccountPlainObject, network: String) -> [String: String]? {
     let data: Data?
     if message.message.hasPrefix("0x") {
       var possibleBuffer = message.message.stripHexPrefix()
@@ -227,7 +232,7 @@ class Web3Wrapper: NSObject {
    
    - Returns: Signed transaction or **nil** if something goes wrong
    */
-  @objc func signTransaction(_ transaction: MEWConnectTransaction, password: String, masterToken: MasterTokenPlainObject, account: AccountPlainObject, network: BlockchainNetworkType = .ethereum) -> String? {
+  @objc func signTransaction(_ transaction: MEWConnectTransaction, password: String, masterToken: MasterTokenPlainObject, account: AccountPlainObject, network: String) -> String? {
     guard let encryptedKeydata = self.keychainService?.obtainKeydata(ofMasterToken: masterToken, ofAccount: account, inChainID: network) else { return nil }
     guard let keydata = self.MEWcrypto?.decryptData(encryptedKeydata, withPassword: password) else { return nil }
 
@@ -311,6 +316,12 @@ class Web3Wrapper: NSObject {
       guard let jsonData = try? JSONEncoder().encode(request) else { return nil }
       return jsonData
     }
+  }
+  
+  @objc static func listSubnetsRequest() -> Data? {
+    let request = JSONRPCRequestFabric.prepareRequest(.gasPrice, parameters: [])
+    guard let jsonData = try? JSONEncoder().encode(request) else { return nil }
+    return jsonData
   }
 
   @objc static func erc20TokensTransaction(forAddress address: String, contractAddresses: [String]) -> Data? {

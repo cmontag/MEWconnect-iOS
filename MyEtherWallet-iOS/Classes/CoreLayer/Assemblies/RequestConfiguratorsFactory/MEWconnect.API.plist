@@ -5,6 +5,8 @@
 	<key>API</key>
 	<dict>
 		<key>NodeURL</key>
+		<string>NSURL(https://ava.network:21015)</string>
+		<key>MewURL</key>
 		<string>NSURL(https://api.myetherwallet.com)</string>
 		<key>TickerURL</key>
 		<string>NSURL(https://cryptorates.mewapi.io)</string>

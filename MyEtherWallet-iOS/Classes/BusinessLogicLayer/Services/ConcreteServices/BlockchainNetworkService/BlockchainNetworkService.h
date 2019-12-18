@@ -17,5 +17,6 @@
 @protocol BlockchainNetworkService <NSObject>
 - (NetworkModelObject *) obtainActiveNetwork;
 - (void) selectNetwork:(NetworkPlainObject *)network inAccount:(AccountPlainObject *)account;
-- (NetworkModelObject *) createNetworkWithChainID:(BlockchainNetworkType)chainID inAccount:(AccountPlainObject *)account;
+- (void) selectActiveNetworkAddress:(NSNumber *)index;
+- (NetworkModelObject *) createNetworkWithChainID:(NSString *)chainID forAddress:(NSString *)address inAccount:(AccountPlainObject *)account;
 @end

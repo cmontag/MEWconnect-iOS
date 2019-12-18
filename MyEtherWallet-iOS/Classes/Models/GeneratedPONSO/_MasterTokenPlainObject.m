@@ -15,6 +15,7 @@
     [super encodeWithCoder:aCoder];
   
     [aCoder encodeObject:self.fromNetworkMaster forKey:@"fromNetworkMaster"];
+    [aCoder encodeObject:self.active forKey:@"active"];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
@@ -22,6 +23,7 @@
     if (self != nil) {
 
         _fromNetworkMaster = [[aDecoder decodeObjectForKey:@"fromNetworkMaster"] copy];
+        _active = [[aDecoder decodeObjectForKey:@"active"] copy];
     }
 
     return self;
@@ -39,6 +41,7 @@
     replica.decimals = self.decimals;
     replica.name = self.name;
     replica.symbol = self.symbol;
+    replica.active = self.active;
     
     replica.fromNetwork = self.fromNetwork;
     replica.price = self.price;

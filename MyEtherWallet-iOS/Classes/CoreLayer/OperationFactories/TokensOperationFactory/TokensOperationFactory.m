@@ -51,16 +51,18 @@
 - (CompoundOperationBase *) ethereumBalanceWithBody:(MasterTokenBody *)body inNetwork:(BlockchainNetworkType)network {
   CompoundOperationBuilderConfig *config = [[CompoundOperationBuilderConfig alloc] init];
   
-  config.requestConfigurationType = RequestConfigurationMyEtherAPIType;
+//  config.requestConfigurationType = RequestConfigurationMyEtherAPIType;
   config.requestMethod = kHTTPMethodPOST;
   switch (network) {
     case BlockchainNetworkTypeRopsten: {
       config.serviceName = kServiceNameROP;
+      config.requestConfigurationType = RequestConfigurationMyEtherAPIType;
       break;
     }
     case BlockchainNetworkTypeEthereum:
     default: {
       config.serviceName = kServiceNameETH;
+      config.requestConfigurationType = RequestConfigurationMyEtherAPIType;
       break;
     }
   }
@@ -87,16 +89,18 @@
 - (CompoundOperationBase *) contractBalancesWithBody:(TokensBody *)body inNetwork:(BlockchainNetworkType)network {
   CompoundOperationBuilderConfig *config = [[CompoundOperationBuilderConfig alloc] init];
   
-  config.requestConfigurationType = RequestConfigurationMyEtherAPIType;
+//  config.requestConfigurationType = RequestConfigurationMyEtherAPIType;
   config.requestMethod = kHTTPMethodPOST;
   switch (network) {
     case BlockchainNetworkTypeRopsten: {
       config.serviceName = kServiceNameROP;
+      config.requestConfigurationType = RequestConfigurationMyEtherAPIType;
       break;
     }
     case BlockchainNetworkTypeEthereum:
     default: {
       config.serviceName = kServiceNameETH;
+      config.requestConfigurationType = RequestConfigurationMyEtherAPIType;
       break;
     }
   }

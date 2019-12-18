@@ -98,7 +98,7 @@
     CompoundOperationBase *compoundOperation = [self.simplexOperationFactory statusWithQuery:query];
     [compoundOperation setResultBlock:^(NSArray <PurchaseHistoryModelObject *> *data, NSError *error) {
       for (PurchaseHistoryModelObject *historyItem in data) {
-        if ([historyItem.status shortValue] != SimplexServicePaymentStatusTypeUnknown) {
+        if (historyItem.status != SimplexServicePaymentStatusTypeUnknown) {
           historyItem.loaded = @YES;
         }
       }

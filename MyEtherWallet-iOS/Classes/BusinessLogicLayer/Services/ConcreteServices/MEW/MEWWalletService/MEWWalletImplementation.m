@@ -25,10 +25,12 @@
 #import "AccountPlainObject.h"
 #import "NetworkPlainObject.h"
 #import "MasterTokenPlainObject.h"
+#import "AvaWalletService.h"
 
 #import "AccountModelObject.h"
 #import "NetworkModelObject.h"
 #import "MasterTokenModelObject.h"
+#import "AddressModelObject.h"
 
 #import "UIImage+MEWBackground.h"
 
@@ -41,7 +43,7 @@
   }
 }
 
-- (void) createKeysWithChainIDs:(NSSet<NSNumber *> *)chainIDs forAccount:(AccountPlainObject *)account withPassword:(NSString *)password mnemonicWords:(NSArray<NSString *> *)mnemonicWords completion:(MEWwalletCreateCompletionBlock)completion {
+- (void) createKeysForAvaAccount:(AvaAccount *)avaAccount forAccount:(AccountPlainObject *)account withPassword:(NSString *)password mnemonicWords:(NSArray<NSString *> *)mnemonicWords completion:(MEWwalletCreateCompletionBlock)completion {
   @weakify(self);
   dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
   dispatch_async(queue, ^{
@@ -59,32 +61,43 @@
       dispatch_group_t queueGroup = dispatch_group_create();
       
       //For everyone chainID
-      for (NSNumber *chainID in chainIDs) {
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.chainID = %@ && SELF.fromAccount.uid = %@", chainID, account.uid];
+      for (AvaAddress *avaAddress in avaAccount.addresses) {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.chainID = %@ && SELF.fromAccount.uid = %@", avaAddress.subnet, account.uid];
         NetworkModelObject *networkModelObject = [NetworkModelObject MR_findFirstWithPredicate:predicate inContext:rootSavingContext];
-        if (networkModelObject) {
-          //Already created
-          continue;
+        BOOL isNewSubnet = !networkModelObject;
+        if (isNewSubnet) {
+          //Not yet created
+          NetworkModelObject *generatedNetworkModelObject = [self.networkService createNetworkWithChainID:avaAddress.subnet forAddress:avaAddress.address inAccount:account];
+          networkModelObject = [rootSavingContext objectWithID:[generatedNetworkModelObject objectID]];
         }
         
-        NetworkModelObject *generatedNetworkModelObject = [self.networkService createNetworkWithChainID:[chainID longLongValue] inAccount:account];
-        networkModelObject = [rootSavingContext objectWithID:[generatedNetworkModelObject objectID]];
-        
-        NSArray <NSString *> *ignoringProperties = @[NSStringFromSelector(@selector(fromAccount)),
-                                                     NSStringFromSelector(@selector(tokens))];
-        NetworkPlainObject *network = [self.ponsomizer convertObject:networkModelObject ignoringProperties:ignoringProperties];
-        
-        MasterTokenPlainObject *master = network.master;
+//        NSArray <NSString *> *ignoringProperties = @[NSStringFromSelector(@selector(fromAccount)),
+//                                                     NSStringFromSelector(@selector(tokens))];
+//        NetworkPlainObject *network = [self.ponsomizer convertObject:networkModelObject ignoringProperties:ignoringProperties];
+//
+//        NSArray<MasterTokenPlainObject*> *master = network.master;
 
         //Then create new private key
         dispatch_group_async(queueGroup, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-          NSString *address = [self.wrapper createPrivateKeyWithPassword:password account:account masterToken:master network:[network network]];
+//          NSString *address = [self.wrapper createPrivateKeyWithPassword:password account:account masterToken:master network:avaAddress.subnet];
+          NSString *address = avaAddress.address;
           if (address) {
             //And save public address
-            [rootSavingContext performBlockAndWait:^{
-              networkModelObject.master.address = address;
-              master.address = address;
-            }];
+            if (!isNewSubnet) {
+              [rootSavingContext performBlockAndWait:^{
+                MasterTokenModelObject *masterTokenModelObject = [MasterTokenModelObject MR_createEntityInContext:rootSavingContext];
+                masterTokenModelObject.name = @"Ava";
+                masterTokenModelObject.symbol = @"AVA";
+                masterTokenModelObject.address = address;
+                AddressModelObject *addressModelObject = [AddressModelObject MR_createEntityInContext:rootSavingContext];
+                addressModelObject.active = @NO;
+                addressModelObject.fromNetwork = networkModelObject;
+                masterTokenModelObject.fromAddressMaster = addressModelObject;
+                [networkModelObject addAddressesObject:addressModelObject];
+                [rootSavingContext MR_saveToPersistentStoreAndWait];
+  //              master.address = address;
+              }];
+            }
             
             __block CGSize fullSize;
             __block CGSize cardSize;

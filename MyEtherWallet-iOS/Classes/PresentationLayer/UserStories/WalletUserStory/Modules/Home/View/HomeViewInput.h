@@ -14,14 +14,14 @@
 @class TokenPlainObject;
 
 @protocol HomeViewInput <NSObject>
-- (void) setupInitialStateWithNumberOfTokens:(NSUInteger)tokensCount totalPrice:(NSDecimalNumber *)totalPrice;
+- (void) setupInitialStateWithNumberOfTokens:(NSUInteger)tokensCount totalPrice:(NSDecimalNumber *)totalPrice addressArray:(NSArray<NSString *> *)addressArray;
 - (void) updateWithMasterToken:(MasterTokenPlainObject *)masterToken;
 - (void) updateBalanceWithMasterToken:(MasterTokenPlainObject *)masterToken;
 - (void) updateWithTransactionBatch:(CacheTransactionBatch *)transactionBatch;
 - (void) updateWithTokensCount:(NSUInteger)tokensCount withTotalPrice:(NSDecimalNumber *)totalPrice;
 - (void) startAnimatingRefreshing;
 - (void) stopAnimatingRefreshing;
-- (void) presentNetworkSelection;
+- (void) presentNetworkSelection:(MasterTokenPlainObject *)masterToken;
 - (void) updateStatusWithInternetConnection:(BOOL)internetConnection mewConnectConnection:(BOOL)mewConnectConnection animated:(BOOL)animated;
 - (void) hideKeyboard;
 @end

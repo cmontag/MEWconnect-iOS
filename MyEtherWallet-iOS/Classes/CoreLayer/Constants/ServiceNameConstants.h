@@ -11,6 +11,7 @@
 
 static NSString *const kServiceNameETH            =   @"eth";
 static NSString *const kServiceNameROP            =   @"rop";
+static NSString *const kServiceNameAVA            =   @"ext/wallet";
 
 static NSString *const kServiceNameTicker         =   @"ticker";
 

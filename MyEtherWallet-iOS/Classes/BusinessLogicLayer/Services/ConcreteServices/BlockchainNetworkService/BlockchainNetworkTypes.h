@@ -32,6 +32,7 @@ typedef NS_ENUM(long long, BlockchainNetworkType) {
   BlockchainNetworkTypeEther1           = 1313114,
   BlockchainNetworkTypeMusicCoin        = 7762959,
   BlockchainNetworkTypePirl             = 3125659152,
+  BlockchainNetworkTypeAva              = 43110,
 };
 
 #endif /* BlockchainNetworkTypes_h */

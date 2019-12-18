@@ -13,8 +13,10 @@
 static NSString *const kConfigFileName    = @"MEWconnect.API.plist";
 
 static NSString *const kNodeURLKey        = @"API.NodeURL";
+static NSString *const kMewURLKey         = @"API.MewURL";
 static NSString *const kTickerURLKey      = @"API.TickerURL";
 static NSString *const kSimplexAPIURLKey  = @"API.SimplexAPIURL";
+static NSString *const kAthereumURLKey    = @"API.AthereumURL";
 
 @implementation RequestConfiguratorsAssembly
 
@@ -26,6 +28,8 @@ static NSString *const kSimplexAPIURLKey  = @"API.SimplexAPIURL";
 
 - (id<RequestConfigurator>)requestConfiguratorWithType:(NSNumber *)type url:(NSURL *)url {
   return [TyphoonDefinition withOption:type matcher:^(TyphoonOptionMatcher *matcher) {
+    [matcher caseEqual:@(RequestConfigurationAvaAPIType)
+                   use:[self avaAPIRequestConfigurator]];
     [matcher caseEqual:@(RequestConfigurationMyEtherAPIType)
                    use:[self myEtherAPIRequestConfigurator]];
     [matcher caseEqual:@(RequestConfigurationTickerAPIType)
@@ -37,10 +41,19 @@ static NSString *const kSimplexAPIURLKey  = @"API.SimplexAPIURL";
   }];
 }
 
-- (id<RequestConfigurator>) myEtherAPIRequestConfigurator {
+- (id<RequestConfigurator>) avaAPIRequestConfigurator {
   return [TyphoonDefinition withClass:[RESTRequestConfigurator class] configuration:^(TyphoonDefinition *definition) {
     [definition useInitializer:@selector(initWithBaseURL:apiPath:) parameters:^(TyphoonMethod *initializer) {
       [initializer injectParameterWith:TyphoonConfig(kNodeURLKey)];
+      [initializer injectParameterWith:nil];
+    }];
+  }];
+}
+
+- (id<RequestConfigurator>) myEtherAPIRequestConfigurator {
+  return [TyphoonDefinition withClass:[RESTRequestConfigurator class] configuration:^(TyphoonDefinition *definition) {
+    [definition useInitializer:@selector(initWithBaseURL:apiPath:) parameters:^(TyphoonMethod *initializer) {
+      [initializer injectParameterWith:TyphoonConfig(kMewURLKey)];
       [initializer injectParameterWith:nil];
     }];
   }];

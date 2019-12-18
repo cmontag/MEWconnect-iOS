@@ -14,9 +14,14 @@
 @interface _NetworkPlainObject : NSObject <NSCoding, NSCopying>
 
 @property (nonatomic, copy, readwrite) NSNumber *active;
-@property (nonatomic, copy, readwrite) NSNumber *chainID;
+@property (nonatomic, copy, readwrite) NSNumber *activeIndex;
+//- (MasterTokenPlainObject *)activeMaster;
+//- (NSSet<TokenPlainObject *>*)activeTokens;
+@property (nonatomic, copy, readwrite) NSString *chainID;
 
 @property (nonatomic, copy, readwrite) AccountPlainObject *fromAccount;
+
+@property (nonatomic, copy, readwrite) NSArray<MasterTokenPlainObject *> *masterArray;
 
 @property (nonatomic, copy, readwrite) MasterTokenPlainObject *master;
 

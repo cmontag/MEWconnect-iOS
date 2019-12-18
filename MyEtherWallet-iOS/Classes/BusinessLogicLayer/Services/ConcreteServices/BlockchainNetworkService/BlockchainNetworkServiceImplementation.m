@@ -13,6 +13,7 @@
 #import "AccountModelObject.h"
 #import "NetworkModelObject.h"
 #import "MasterTokenModelObject.h"
+#import "AddressModelObject.h"
 
 #import "AccountPlainObject.h"
 #import "NetworkPlainObject.h"
@@ -48,20 +49,43 @@
   }];
 }
 
-- (NetworkModelObject *) createNetworkWithChainID:(BlockchainNetworkType)chainID inAccount:(AccountPlainObject *)account {
+- (void)selectActiveNetworkAddress:(NSString *)address {
+  NSManagedObjectContext *rootSavingContext = [NSManagedObjectContext MR_rootSavingContext];
+  [rootSavingContext performBlockAndWait:^{
+    NetworkModelObject *networkModelObject = [self obtainActiveNetwork];
+    for (AddressModelObject *addressModelObject in networkModelObject.addresses) {
+      if ([addressModelObject.master.address isEqual:address]) {
+        addressModelObject.active = @YES;
+      } else {
+        addressModelObject.active = @NO;
+      }
+    }
+    if ([rootSavingContext hasChanges]) {
+      [rootSavingContext MR_saveToPersistentStoreAndWait];
+    }
+  }];
+}
+
+- (NetworkModelObject *) createNetworkWithChainID:(NSString *)chainID forAddress:(NSString *)address inAccount:(AccountPlainObject *)account {
   __block NetworkModelObject *createdNetwork = nil;
   NSManagedObjectContext *rootSavingContext = [NSManagedObjectContext MR_rootSavingContext];
   [rootSavingContext performBlockAndWait:^{
     AccountModelObject *accountModelObject = [AccountModelObject MR_findFirstByAttribute:NSStringFromSelector(@selector(uid)) withValue:account.uid inContext:rootSavingContext];
     
     NetworkModelObject *networkModelObject = [NetworkModelObject MR_createEntityInContext:rootSavingContext];
-    networkModelObject.chainID = @(chainID);
+    networkModelObject.chainID = chainID;
     
     MasterTokenModelObject *masterTokenModelObject = [MasterTokenModelObject MR_createEntityInContext:rootSavingContext];
-    masterTokenModelObject.name = [BlockchainNetworkTypesInfoProvider nameForNetworkType:chainID];
-    masterTokenModelObject.symbol = [BlockchainNetworkTypesInfoProvider currencySymbolForNetworkType:chainID];
+    masterTokenModelObject.name = @"Ava";
+    masterTokenModelObject.symbol = @"AVA";
+    masterTokenModelObject.address = address;
     
-    masterTokenModelObject.fromNetworkMaster = networkModelObject;
+    AddressModelObject *addressModelObject = [AddressModelObject MR_createEntityInContext:rootSavingContext];
+    addressModelObject.active = @YES;
+    addressModelObject.fromNetwork = networkModelObject;
+    masterTokenModelObject.fromAddressMaster = addressModelObject;
+    
+    [networkModelObject addAddressesObject:addressModelObject];
     [accountModelObject addNetworksObject:networkModelObject];
     [rootSavingContext MR_saveToPersistentStoreAndWait];
     

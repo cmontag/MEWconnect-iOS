@@ -1,5 +1,6 @@
-#import "_PurchaseHistoryModelObject.h"
+#import "PurchaseHistory+CoreDataClass.h"
 
-@interface PurchaseHistoryModelObject : _PurchaseHistoryModelObject
+@interface PurchaseHistoryModelObject : PurchaseHistory
 // Custom logic goes here.
++ (NSString*)entityName;
 @end

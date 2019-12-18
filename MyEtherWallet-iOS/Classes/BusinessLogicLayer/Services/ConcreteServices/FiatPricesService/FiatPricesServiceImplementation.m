@@ -19,6 +19,7 @@
 #import "TokenModelObject.h"
 #import "FiatPriceModelObject.h"
 #import "MasterTokenModelObject.h"
+#import "AddressModelObject.h"
 
 #import "FiatPricesServiceImplementation.h"
 
@@ -72,8 +73,9 @@ static NSString *const FiatPricesEthereumSymbol = @"ETH";
 #pragma mark - Private
 
 - (FiatPricesQuery *) _obtainTokensQueryWithNetwork:(NetworkModelObject *)networkModelObject {
-  NSSet <NSString *> *symbols = [networkModelObject.tokens valueForKeyPath:NSStringFromSelector(@selector(symbol))];
-  NSString *masterSymbol = networkModelObject.master.symbol;
+  AddressModelObject *addressModelObject = [networkModelObject.addresses anyObject];
+  NSSet <NSString *> *symbols = [addressModelObject.tokens valueForKeyPath:NSStringFromSelector(@selector(symbol))];
+  NSString *masterSymbol = addressModelObject.master.symbol;
   if (masterSymbol) {
     symbols = [symbols setByAddingObject:masterSymbol];
   }

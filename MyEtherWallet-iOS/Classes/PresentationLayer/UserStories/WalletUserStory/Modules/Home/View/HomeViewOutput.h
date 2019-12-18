@@ -12,6 +12,7 @@
 - (void) didTriggerViewReadyEvent;
 - (void) didTriggerViewWillAppear;
 - (void) didTriggerViewDidDisappear;
+- (void) transactionAction;
 - (void) connectAction;
 - (void) disconnectAction;
 - (void) backupAction;
@@ -20,7 +21,10 @@
 - (void) buyEtherAction;
 - (void) refreshTokensAction;
 - (void) shareAction;
+- (void) changeAddressAction:(NSNumber *)index;
+- (void) segueAddressAction:(NSNumber *)direction;
 - (void) networkAction;
 - (void) mainnetAction;
 - (void) ropstenAction;
+- (void) avaActionWithSubnet:(NSString *)subnetID;
 @end

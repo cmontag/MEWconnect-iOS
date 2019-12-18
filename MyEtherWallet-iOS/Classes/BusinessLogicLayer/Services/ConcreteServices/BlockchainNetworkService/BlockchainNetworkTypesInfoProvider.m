@@ -35,7 +35,8 @@ static NSDictionary *BlockchainNetworkInfoNames = nil;
                                              @(BlockchainNetworkTypeAkroma):            @"AKA",
                                              @(BlockchainNetworkTypeEther1):            @"ETHO",
                                              @(BlockchainNetworkTypeMusicCoin):         @"MUSIC",
-                                             @(BlockchainNetworkTypePirl):              @"PIRL"};
+                                             @(BlockchainNetworkTypePirl):              @"PIRL",
+                                             @(BlockchainNetworkTypeAva):               @"AVA"};
     BlockchainNetworkInfoNames = @{@(BlockchainNetworkTypeEthereum):          @"Ethereum",
                                    @(BlockchainNetworkTypeExpanse):           @"Expanse",
                                    @(BlockchainNetworkTypeRopsten):           @"Ethereum Ropsten",
@@ -55,7 +56,8 @@ static NSDictionary *BlockchainNetworkInfoNames = nil;
                                    @(BlockchainNetworkTypeAkroma):            @"Akroma",
                                    @(BlockchainNetworkTypeEther1):            @"Ether1",
                                    @(BlockchainNetworkTypeMusicCoin):         @"Music Coin",
-                                   @(BlockchainNetworkTypePirl):              @"Pirl"};
+                                   @(BlockchainNetworkTypePirl):              @"Pirl",
+                                   @(BlockchainNetworkTypeAva):               @"Ava"};
   });
 }
 
@@ -75,6 +77,10 @@ static NSDictionary *BlockchainNetworkInfoNames = nil;
     }
     case BlockchainNetworkTypeRopsten: {
       return @"Ropsten";
+      break;
+    }
+    case BlockchainNetworkTypeAva: {
+      return @"Ava";
       break;
     }
     default:

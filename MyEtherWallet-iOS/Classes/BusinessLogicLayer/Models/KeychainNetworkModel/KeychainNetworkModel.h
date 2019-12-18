@@ -12,6 +12,6 @@
 
 @interface KeychainNetworkModel : NSObject
 @property (nonatomic, strong, readonly) NSString *address;
-@property (nonatomic, readonly) BlockchainNetworkType chainID;
-+ (instancetype) itemModelWithAddress:(NSString *)address chainID:(BlockchainNetworkType)chainID;
+@property (nonatomic, readonly) NSString *chainID;
++ (instancetype) itemModelWithAddress:(NSString *)address chainID:(NSString *)chainID;
 @end

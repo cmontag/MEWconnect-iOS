@@ -20,7 +20,9 @@
 #import "AccountModelObject.h"
 #import "NetworkModelObject.h"
 #import "MasterTokenModelObject.h"
+#import "TokenModelObject.h"
 #import "PurchaseHistoryModelObject.h"
+#import "AddressModelObject.h"
 
 #import "BlockchainNetworkTypes.h"
 #import "BlockchainNetworkTypesInfoProvider.h"
@@ -85,7 +87,6 @@ static NSString *const kCoreDataConfiguratorReset1012  = @"com.myetherwallet.cor
 - (void) _restoreCoreDataStructure {
   NSManagedObjectContext *rootSavingContext = [NSManagedObjectContext MR_rootSavingContext];
   // Restore structure if needed
-  
   [rootSavingContext performBlockAndWait:^{
     NSArray <AccountModelObject *> *accountModels = [AccountModelObject MR_findAllInContext:rootSavingContext];
     NSArray <KeychainAccountModel *> *storedItems = [self.keychainService obtainStoredItems];
@@ -97,28 +98,38 @@ static NSString *const kCoreDataConfiguratorReset1012  = @"com.myetherwallet.cor
         
         for (KeychainNetworkModel *keychainNetworkItem in keychainItem.networks) {
           NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.master.address = %@", keychainNetworkItem.address];
-          NSSet <NetworkModelObject *> *networks = [accountModelObject.networks filteredSetUsingPredicate:predicate];
-          if ([networks count] > 0) {
+          BOOL networkExists = NO;
+          for (NetworkModelObject *networkItem in accountModelObject.networks) {
+            NSSet <AddressModelObject *> *addresses = [networkItem.addresses filteredSetUsingPredicate:predicate];
+            if ([addresses count] > 0) {
+              networkExists = YES;
+            }
+          }
+          if (networkExists) {
             continue;
           }
-          
+
           NetworkModelObject *networkModelObject = [NetworkModelObject MR_createEntityInContext:rootSavingContext];
-          networkModelObject.chainID = @(keychainNetworkItem.chainID);
-          
+          networkModelObject.chainID = keychainNetworkItem.chainID;
+
           MasterTokenModelObject *masterTokenModelObject = [MasterTokenModelObject MR_createEntityInContext:rootSavingContext];
           masterTokenModelObject.address = keychainNetworkItem.address;
-          masterTokenModelObject.name = [BlockchainNetworkTypesInfoProvider nameForNetworkType:keychainNetworkItem.chainID];
-          masterTokenModelObject.symbol = [BlockchainNetworkTypesInfoProvider currencySymbolForNetworkType:keychainNetworkItem.chainID];
-          
-          networkModelObject.master = masterTokenModelObject;
+//          masterTokenModelObject.name = [BlockchainNetworkTypesInfoProvider nameForNetworkType:keychainNetworkItem.chainID];
+          masterTokenModelObject.name = @"Ava";
+//          masterTokenModelObject.symbol = [BlockchainNetworkTypesInfoProvider currencySymbolForNetworkType:keychainNetworkItem.chainID];
+          masterTokenModelObject.symbol = @"AVA";
+
+          AddressModelObject *addressModelObject = [AddressModelObject MR_createEntityInContext:rootSavingContext];
+          addressModelObject.master = masterTokenModelObject;
+          [networkModelObject addAddressesObject:addressModelObject];
           [accountModelObject addNetworksObject:networkModelObject];
-          
+
           NSArray *ignoringProperties = @[NSStringFromSelector(@selector(purchaseHistory)),
                                           NSStringFromSelector(@selector(price)),
                                           NSStringFromSelector(@selector(tokens)),
                                           NSStringFromSelector(@selector(networks))];
           MasterTokenPlainObject *masterToken = [self.ponsomizer convertObject:masterTokenModelObject ignoringProperties:ignoringProperties];
-          
+
           NSArray <KeychainHistoryItemModel *> *purchaseHistory = [self.keychainService obtainPurchaseHistoryOfMasterToken:masterToken];
           for (KeychainHistoryItemModel *purchaseHistoryItem in purchaseHistory) {
             PurchaseHistoryModelObject *historyModelObject = [PurchaseHistoryModelObject MR_createEntityInContext:rootSavingContext];
@@ -128,25 +139,27 @@ static NSString *const kCoreDataConfiguratorReset1012  = @"com.myetherwallet.cor
           }
         }
       }
-      
+
       AccountModelObject *accountModelObject = [AccountModelObject MR_findFirstInContext:rootSavingContext];
-      NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.chainID = %lld", BlockchainNetworkTypeEthereum];
-      NetworkModelObject *networkModelObject = [[accountModelObject.networks filteredSetUsingPredicate:predicate] anyObject];
+//      NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.chainID = %lld", BlockchainNetworkTypeEthereum];
+//      NetworkModelObject *networkModelObject = [[accountModelObject.networks filteredSetUsingPredicate:predicate] anyObject];
+      // Start with random subnet?
+      NetworkModelObject *networkModelObject = [accountModelObject.networks anyObject];
       if (!networkModelObject) {
         networkModelObject = [accountModelObject.networks anyObject];
       }
-      
+
       accountModelObject.active = @YES;
       networkModelObject.active = @YES;
     }
     //Clear ghost tokens
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.fromNetworkMaster == nil && SELF.fromNetwork == nil"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.fromAddressMaster == nil && SELF.fromAddress == nil"];
     NSArray <MasterTokenModelObject *> *ghostMasterTokens = [MasterTokenModelObject MR_findAllWithPredicate:predicate inContext:rootSavingContext];
     if ([ghostMasterTokens count] > 0) {
       [rootSavingContext MR_deleteObjects:ghostMasterTokens];
     }
-    
-    predicate = [NSPredicate predicateWithFormat:@"SELF.fromNetwork == nil"];
+
+    predicate = [NSPredicate predicateWithFormat:@"SELF.fromAddress == nil"];
     NSFetchRequest <TokenModelObject *> *request = [TokenModelObject MR_requestAllWithPredicate:predicate inContext:rootSavingContext];
     request.includesSubentities = NO;
     NSArray <TokenModelObject *> *ghostTokens = [request execute:nil];

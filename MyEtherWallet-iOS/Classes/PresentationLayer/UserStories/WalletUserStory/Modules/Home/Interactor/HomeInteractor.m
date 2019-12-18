@@ -10,6 +10,7 @@
 
 #import "HomeInteractor.h"
 
+#import "AvaWalletService.h"
 #import "TokensService.h"
 
 #import "MEWConnectFacade.h"
@@ -29,6 +30,8 @@
 #import "NetworkPlainObject.h"
 #import "MasterTokenPlainObject.h"
 #import "TokenModelObject.h"
+#import "NetworkModelObject.h"
+#import "AddressModelObject.h"
 
 #import "HomeInteractorOutput.h"
 
@@ -52,6 +55,7 @@ static NSTimeInterval kHomeInteractorDefaultRefreshBalancesTime = 900.0;
 
 @interface HomeInteractor ()
 @property (nonatomic, strong) NSTimer *updateTimer;
+@property (nonatomic, strong) AddressModelObject *addressObject;
 @property (nonatomic, strong) MasterTokenPlainObject *masterToken;
 @property (nonatomic) HomeInteractorUpdatingStatus updatingStatus;
 @end
@@ -102,11 +106,13 @@ static NSTimeInterval kHomeInteractorDefaultRefreshBalancesTime = 900.0;
 
 - (void) refreshMasterToken {
   MasterTokenModelObject *masterTokenModelObject = [self.tokensService obtainActiveMasterToken];
+  AddressModelObject *addressModelObject = [self.tokensService obtainActiveAddress];
   NSArray *ignoringProperties = @[NSStringFromSelector(@selector(tokens)),
                                   NSStringFromSelector(@selector(purchaseHistory))];
   MasterTokenPlainObject *masterToken = [self.ponsomizer convertObject:masterTokenModelObject ignoringProperties:ignoringProperties];
   BOOL refreshCacheRequest = self.masterToken && !([masterToken isEqualToMasterToken:self.masterToken]);
   self.masterToken = masterToken;
+  self.addressObject = addressModelObject;
   if (refreshCacheRequest) {
     [self _reloadCacheRequest];
   }
@@ -132,6 +138,10 @@ static NSTimeInterval kHomeInteractorDefaultRefreshBalancesTime = 900.0;
   return [self.tokensService obtainTokensTotalPriceOfMasterToken:[self obtainMasterToken]];
 }
 
+- (NSArray<NSString *> *) obtainAddressArray {
+  return [[self obtainNetwork].masterArray valueForKey:@"address"];
+}
+
 - (void) searchTokensWithTerm:(NSString *)term {
   if ([term length] > 0) {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(SELF.name contains[cd] %@ || SELF.symbol contains[cd] %@) && SELF.address != nil && SELF.fromNetwork.master.address == %@", term, term, [self obtainMasterToken].address];
@@ -155,33 +165,53 @@ static NSTimeInterval kHomeInteractorDefaultRefreshBalancesTime = 900.0;
   [self _updateTokensBalance];
 }
 
-- (void)selectMainnetNetwork {
-  AccountModelObject *accountModelObject = [self.accountsService obtainAccountWithAccount:[self obtainAccount]];
-  NSArray <NSString *> *ignoringProperties = @[NSStringFromSelector(@selector(master)),
-                                               NSStringFromSelector(@selector(fromAccount)),
-                                               NSStringFromSelector(@selector(tokens))];
-  AccountPlainObject *account = [self.ponsomizer convertObject:accountModelObject ignoringProperties:ignoringProperties];
-  
-  NetworkPlainObject *network = [account networkForNetworkType:BlockchainNetworkTypeEthereum];
-  if (network && ![network.active boolValue]) {
-    [self.blockchainNetworkService selectNetwork:network inAccount:account];
-    [self.output networkDidChanged];
-  }
-}
+//- (void)selectMainnetNetwork {
+//  AccountModelObject *accountModelObject = [self.accountsService obtainAccountWithAccount:[self obtainAccount]];
+//  NSArray <NSString *> *ignoringProperties = @[NSStringFromSelector(@selector(master)),
+//                                               NSStringFromSelector(@selector(fromAccount)),
+//                                               NSStringFromSelector(@selector(tokens))];
+//  AccountPlainObject *account = [self.ponsomizer convertObject:accountModelObject ignoringProperties:ignoringProperties];
+//
+//  NetworkPlainObject *network = [account networkForNetworkType:BlockchainNetworkTypeEthereum];
+//  if (network && ![network.active boolValue]) {
+//    [self.blockchainNetworkService selectNetwork:network inAccount:account];
+//    [self.output networkDidChanged];
+//  }
+//}
 
-- (void) selectRopstenNetwork {
+//- (void) selectRopstenNetwork {
+//  AccountModelObject *accountModelObject = [self.accountsService obtainAccountWithAccount:[self obtainAccount]];
+//  NSArray <NSString *> *ignoringProperties = @[NSStringFromSelector(@selector(master)),
+//                                               NSStringFromSelector(@selector(fromAccount)),
+//                                               NSStringFromSelector(@selector(tokens))];
+//  AccountPlainObject *account = [self.ponsomizer convertObject:accountModelObject ignoringProperties:ignoringProperties];
+//  NetworkPlainObject *network = [account networkForNetworkType:BlockchainNetworkTypeRopsten];
+//  if (!network) {
+//    [self.output passwordIsNeededWithAccount:account];
+//  } else if (![network.active boolValue]) {
+//    [self.blockchainNetworkService selectNetwork:network inAccount:account];
+//    [self.output networkDidChanged];
+//  }
+//}
+
+- (void) selectAvaNetworkWithSubnet:(NSString *)subnetID {
   AccountModelObject *accountModelObject = [self.accountsService obtainAccountWithAccount:[self obtainAccount]];
   NSArray <NSString *> *ignoringProperties = @[NSStringFromSelector(@selector(master)),
                                                NSStringFromSelector(@selector(fromAccount)),
                                                NSStringFromSelector(@selector(tokens))];
   AccountPlainObject *account = [self.ponsomizer convertObject:accountModelObject ignoringProperties:ignoringProperties];
-  NetworkPlainObject *network = [account networkForNetworkType:BlockchainNetworkTypeRopsten];
+  NetworkPlainObject *network = [account networkForNetworkType:subnetID];
   if (!network) {
     [self.output passwordIsNeededWithAccount:account];
   } else if (![network.active boolValue]) {
     [self.blockchainNetworkService selectNetwork:network inAccount:account];
     [self.output networkDidChanged];
   }
+}
+
+- (void) selectAddress:(NSNumber *)index {
+  [self.blockchainNetworkService selectActiveNetworkAddress:index];
+  [self.output networkDidChanged];
 }
 
 - (void) generateMissedKeysWithPassword:(NSString *)password {
@@ -194,15 +224,15 @@ static NSTimeInterval kHomeInteractorDefaultRefreshBalancesTime = 900.0;
   if ([self.walletService isSeedAvailableForAccount:account]) {
     NSSet *chainIDs = [NSSet setWithObjects:@(BlockchainNetworkTypeRopsten), nil];
     
-    @weakify(self);
-    [self.walletService createKeysWithChainIDs:chainIDs
-                                    forAccount:account
-                                  withPassword:password
-                                 mnemonicWords:nil
-                                    completion:^(__unused BOOL success) {
-                                      @strongify(self);
-                                      [self selectRopstenNetwork];
-                                    }];
+//    @weakify(self);
+//    [self.walletService createKeysWithChainIDs:chainIDs
+//                                    forAccount:account
+//                                  withPassword:password
+//                                 mnemonicWords:nil
+//                                    completion:^(__unused BOOL success) {
+//                                      @strongify(self);
+//                                      [self selectRopstenNetwork];
+//                                    }];
   } else {
     [self.output seedIsNeededWithAccount:account password:password];
   }

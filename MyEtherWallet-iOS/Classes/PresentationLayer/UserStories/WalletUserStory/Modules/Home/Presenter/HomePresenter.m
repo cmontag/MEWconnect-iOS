@@ -6,6 +6,7 @@
 //  Copyright © 2018 MyEtherWallet, Inc. All rights reserved.
 //
 
+@import MagicalRecord;
 @import libextobjc.EXTScope;
 
 #import "HomePresenter.h"
@@ -13,6 +14,12 @@
 #import "HomeViewInput.h"
 #import "HomeInteractorInput.h"
 #import "HomeRouterInput.h"
+
+#import "MasterTokenPlainObject.h"
+#import "NetworkPlainObject.h"
+#import "AccountPlainObject.h"
+#import "AccountModelObject.h"
+#import "NetworkModelObject.h"
 
 #import "MEWConnectCommand.h"
 
@@ -74,7 +81,8 @@ typedef NS_OPTIONS(short, HomeViewPresenterStatus) {
 - (void) didTriggerViewReadyEvent {
   NSUInteger count = [self.interactor obtainNumberOfTokens];
   NSDecimalNumber *tokensPrice = [self.interactor obtainTotalPriceOfTokens];
-  [self.view setupInitialStateWithNumberOfTokens:count totalPrice:tokensPrice];
+  NSArray<NSString *> *addressArray = [self.interactor obtainAddressArray];
+  [self.view setupInitialStateWithNumberOfTokens:count totalPrice:tokensPrice addressArray:addressArray];
   MasterTokenPlainObject *masterToken = [self.interactor obtainMasterToken];
   [self.view updateWithMasterToken:masterToken];
   
@@ -94,6 +102,11 @@ typedef NS_OPTIONS(short, HomeViewPresenterStatus) {
 
 - (void) didTriggerViewDidDisappear {
   _viewVisible = NO;
+}
+
+- (void) transactionAction {
+  MasterTokenPlainObject *masterToken = [self.interactor obtainMasterToken];
+  [self.router openAvaTransactionWithMasterToken:masterToken];
 }
 
 - (void) connectAction {
@@ -137,8 +150,25 @@ typedef NS_OPTIONS(short, HomeViewPresenterStatus) {
   [self.router openShareWithMasterToken:masterToken];
 }
 
+- (void) changeAddressAction:(NSNumber *)index {
+  [self.interactor selectAddress:index];
+}
+
+- (void) segueAddressAction:(NSNumber *)direction {
+  MasterTokenPlainObject *masterToken = [self.interactor obtainMasterToken];
+  NetworkPlainObject *network = masterToken.fromNetworkMaster;
+  AccountPlainObject *account = network.fromAccount;
+  NSManagedObjectContext *defaultContext = [NSManagedObjectContext MR_defaultContext];
+  AccountModelObject *accountModelObject = [AccountModelObject MR_findFirstByAttribute:NSStringFromSelector(@selector(uid)) withValue:account.uid inContext:defaultContext];
+  for (NetworkModelObject *network in accountModelObject.networks) {
+    NSLog(@"plz");
+  }
+  NSLog(@"Done!");
+}
+
 - (void) networkAction {
-  [self.view presentNetworkSelection];
+  MasterTokenPlainObject *masterToken = [self.interactor obtainMasterToken];
+  [self.view presentNetworkSelection:masterToken];
 }
 
 - (void) mainnetAction {
@@ -147,6 +177,10 @@ typedef NS_OPTIONS(short, HomeViewPresenterStatus) {
 
 - (void) ropstenAction {
   [self.interactor selectRopstenNetwork];
+}
+
+- (void) avaActionWithSubnet:(NSString *)subnetID {
+  [self.interactor selectAvaNetworkWithSubnet:subnetID];
 }
 
 #pragma mark - HomeInteractorOutput

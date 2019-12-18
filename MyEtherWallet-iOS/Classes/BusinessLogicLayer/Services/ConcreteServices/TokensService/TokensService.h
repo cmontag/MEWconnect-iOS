@@ -10,6 +10,7 @@
 
 @class MasterTokenModelObject;
 @class MasterTokenPlainObject;
+@class AddressModelObject;
 
 @class TokenModelObject;
 
@@ -20,6 +21,7 @@ typedef void(^TokensServiceCompletion)(NSError *error);
 - (void) updateTokenBalancesOfMasterToken:(MasterTokenPlainObject *)masterToken withCompletion:(TokensServiceCompletion)completion;
 - (NSUInteger) obtainNumberOfTokensOfMasterToken:(MasterTokenPlainObject *)masterToken;
 - (NSDecimalNumber *) obtainTokensTotalPriceOfMasterToken:(MasterTokenPlainObject *)masterToken;
+- (AddressModelObject *) obtainActiveAddress;
 - (MasterTokenModelObject *) obtainActiveMasterToken;
 - (TokenModelObject *) obtainTokenWithAddress:(NSString *)address ofMasterToken:(MasterTokenPlainObject *)masterToken;
 - (void) resetTokens;

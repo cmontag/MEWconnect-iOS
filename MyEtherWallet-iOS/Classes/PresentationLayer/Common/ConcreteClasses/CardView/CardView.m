@@ -38,6 +38,7 @@ CGFloat const kCardViewAspectRatio              = 216.0/343.0;;
 @property (nonatomic, weak) UIButton *seedLabelButton;
 @property (nonatomic, weak) UIView *backupViewWarning;
 @property (nonatomic, weak) UIView *backupViewOk;
+@property (nonatomic, weak) UIButton *changeCardButton;
 @end
 
 @implementation CardView {
@@ -146,10 +147,31 @@ CGFloat const kCardViewAspectRatio              = 216.0/343.0;;
     balance = [NSDecimalNumber zero];
   }
   
-  NSNumberFormatter *ethereumFormatter = [NSNumberFormatter ethereumFormatterWithNetwork:network];
+  NSNumberFormatter *ethereumFormatter = [NSNumberFormatter ethereumFormatterWithNetwork:@""];
   ethereumFormatter.maximumSignificantDigits = 8;
   switch (network) {
     case BlockchainNetworkTypeEthereum: {
+      switch ([UIScreen mainScreen].screenSizeType) {
+        case ScreenSizeTypeInches40: {
+          ethereumFormatter.maximumSignificantDigits = 9;
+          break;
+        }
+        case ScreenSizeTypeInches47:
+        case ScreenSizeTypeInches58: {
+          ethereumFormatter.maximumSignificantDigits = 10;
+          break;
+        }
+        case ScreenSizeTypeInches55: {
+          ethereumFormatter.maximumSignificantDigits = 12;
+          break;
+        }
+        default:
+          ethereumFormatter.maximumSignificantDigits = 8;
+          break;
+      }
+      break;
+    }
+    case BlockchainNetworkTypeAva: {
       switch ([UIScreen mainScreen].screenSizeType) {
         case ScreenSizeTypeInches40: {
           ethereumFormatter.maximumSignificantDigits = 9;
@@ -258,6 +280,12 @@ CGFloat const kCardViewAspectRatio              = 216.0/343.0;;
 #pragma mark - Private
 
 - (void) _commonInit {
+  UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(segueAddressAction:)];
+  UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(segueAddressAction:)];
+  [swipeRight setDirection:UISwipeGestureRecognizerDirectionRight];
+  [swipeLeft setDirection:UISwipeGestureRecognizerDirectionLeft];
+  [self addGestureRecognizer:swipeRight];
+  [self addGestureRecognizer:swipeLeft];
   { //Background
     UIImageView *backgroundImageView = [[UIImageView alloc] init];
     backgroundImageView.layer.masksToBounds = YES;
@@ -365,6 +393,23 @@ CGFloat const kCardViewAspectRatio              = 216.0/343.0;;
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[backup]-(BOFFSET)-|" options:NSLayoutFormatDirectionLeftToRight metrics:metrics views:views]];
     self.backupViewWarning = backupWarningView;
   }
+  { //Change card button
+    UIButton *changeCardButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [changeCardButton addTarget:self action:@selector(changeAddressAction:) forControlEvents:UIControlEventTouchUpInside];
+    changeCardButton.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addSubview:changeCardButton];
+    NSDictionary *attributes = @{NSForegroundColorAttributeName: [UIColor whiteColor],
+                                 NSFontAttributeName: [UIFont systemFontOfSize:16.0 weight:UIFontWeightSemibold],
+                                 NSKernAttributeName: @0.0};
+    NSString *title = NSLocalizedString(@"CHANGE CARD", @"Card view: change card button title");
+    [changeCardButton setAttributedTitle:[[NSAttributedString alloc] initWithString:title attributes:attributes] forState:UIControlStateNormal];
+    NSDictionary *metrics = @{@"ROFFSET": @(kCardViewDefaultOffset),
+                              @"BOFFSET": @(kCardViewDefaultOffset - 4.0)};
+    NSDictionary *views = @{@"change_card": changeCardButton};
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[change_card]-(ROFFSET)-|" options:NSLayoutFormatDirectionLeftToRight metrics:metrics views:views]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[change_card]-(BOFFSET)-|" options:NSLayoutFormatDirectionLeftToRight metrics:metrics views:views]];
+    self.changeCardButton = changeCardButton;
+  }
   
   { //Shadow
     self.layer.cornerRadius = kCardViewDefaultCornerRadius;
@@ -396,28 +441,30 @@ CGFloat const kCardViewAspectRatio              = 216.0/343.0;;
   NSDictionary *attributes = @{NSForegroundColorAttributeName: [UIColor whiteColor],
                                NSFontAttributeName: font,
                                NSKernAttributeName: @0.0};
-  NSString *title = nil;
-  if (_network == BlockchainNetworkTypeEthereum) {
-    title = NSLocalizedString(@"Your public Ethereum address", @"Card view");
-  } else {
-    title = NSLocalizedString(@"Your public Ropsten testnet address", @"Card view");
-  }
+  NSString *title = NSLocalizedString(@"Your public Ava demo subnet address", @"Card view");
+//  if (_network == BlockchainNetworkTypeEthereum) {
+//    title = NSLocalizedString(@"Your public Ethereum address", @"Card view");
+//  } else {
+//    title = NSLocalizedString(@"Your public Ropsten testnet address", @"Card view");
+//  }
   self.ethereumTitleLabel.attributedText = [[NSAttributedString alloc] initWithString:title attributes:attributes];
 }
 
 /* $423.65 USD @ $746/ETH */
 - (void) _updateUsdBalance {
-  if ((_ethBalance && _ethToUsdPrice) || _network == BlockchainNetworkTypeRopsten) {
+  if ((_ethBalance && _ethToUsdPrice) || _network == BlockchainNetworkTypeRopsten || _network == BlockchainNetworkTypeAva) {
     NSString *finalString = nil;
     NSString *usdBalance = nil;
     
     if (_network == BlockchainNetworkTypeEthereum) {
       NSDecimalNumber *usd = [_ethBalance decimalNumberByMultiplyingBy:_ethToUsdPrice];
       NSNumberFormatter *usdFormatter = [NSNumberFormatter usdFormatter];
-      NSNumberFormatter *ethFormatter = [NSNumberFormatter ethereumFormatterWithNetwork:_network];
+      NSNumberFormatter *ethFormatter = [NSNumberFormatter ethereumFormatterWithNetwork:@""];
       usdBalance = [usdFormatter stringFromNumber:usd];
       NSString *ethUsdPrice = [usdFormatter stringFromNumber:_ethToUsdPrice];
       finalString = [NSString stringWithFormat:@"%@ USD @ %@/%@", usdBalance, ethUsdPrice, ethFormatter.currencySymbol];
+    } else if (_network == BlockchainNetworkTypeAva) {
+      finalString = NSLocalizedString(@"Demo network", nil);
     } else {
       finalString = NSLocalizedString(@"Test network", nil);
     }
@@ -616,6 +663,20 @@ CGFloat const kCardViewAspectRatio              = 216.0/343.0;;
 
 - (void) backupStatusAction:(__unused UIButton *)sender {
   [self.delegate cardViewDidTouchBackupStatusButton:self];
+}
+
+- (void) changeAddressAction:(__unused UIButton *)sender {
+  [self.delegate cardViewDidTouchChangeCardButton:self];
+}
+
+- (void) segueAddressAction:(UISwipeGestureRecognizer *)swipe {
+  if (swipe.direction == UISwipeGestureRecognizerDirectionLeft) {
+    NSLog(@"Left swipe!");
+  }
+  if (swipe.direction == UISwipeGestureRecognizerDirectionRight) {
+    NSLog(@"Right swipe!");
+  }
+  [self.delegate cardViewDidSwipeBackground:self];
 }
 
 @end

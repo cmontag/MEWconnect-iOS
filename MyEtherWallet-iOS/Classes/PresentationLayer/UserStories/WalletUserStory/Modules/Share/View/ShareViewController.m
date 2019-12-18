@@ -90,12 +90,12 @@
                                  NSForegroundColorAttributeName: self.titleLabel.textColor,
                                  NSParagraphStyleAttributeName: style,
                                  NSKernAttributeName: @(titleKern)};
-    NSString *title = nil;
-    if (network == BlockchainNetworkTypeEthereum) {
-      title = NSLocalizedString(@"Your public Ethereum address", nil);
-    } else {
-      title = NSLocalizedString(@"Your public Ropsten testnet address", nil);
-    }
+    NSString *title = NSLocalizedString(@"Your public Ava demo subnet address", nil);
+//    if (network == BlockchainNetworkTypeEthereum) {
+//      title = NSLocalizedString(@"Your public Ethereum address", nil);
+//    } else {
+//      title = NSLocalizedString(@"Your public Ropsten testnet address", nil);
+//    }
     self.titleLabel.attributedText = [[NSAttributedString alloc] initWithString:title attributes:attributes];
   }
   { //Description

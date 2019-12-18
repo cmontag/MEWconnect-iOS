@@ -129,7 +129,8 @@
   switch (_currency) {
     case SimplexServiceCurrencyTypeUSD: {
       prefix = [NSNumberFormatter usdFormatter].currencySymbol;
-      convertedFormatter = [NSNumberFormatter ethereumFormatterWithNetwork:BlockchainNetworkTypeEthereum];
+//      convertedFormatter = [NSNumberFormatter ethereumFormatterWithNetwork:BlockchainNetworkTypeEthereum];
+      convertedFormatter = [NSNumberFormatter ethereumFormatterWithNetwork:@""];
       nullSuffix = convertedFormatter.currencySymbol;
       break;
     }

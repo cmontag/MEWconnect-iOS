@@ -17,6 +17,7 @@
 @protocol RestoreSeedModuleOutput;
 
 @protocol HomeRouterInput <NSObject>
+- (void) openAvaTransactionWithMasterToken:(MasterTokenPlainObject *)masterToken;
 - (void) openScanner;
 - (void) openShareWithMasterToken:(MasterTokenPlainObject *)masterToken;
 - (void) openContextPasswordWithOutput:(id <ContextPasswordModuleOutput>)output account:(AccountPlainObject *)account;

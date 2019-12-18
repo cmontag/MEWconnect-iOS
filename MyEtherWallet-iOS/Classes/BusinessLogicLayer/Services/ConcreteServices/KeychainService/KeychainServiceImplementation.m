@@ -51,7 +51,8 @@
       for (NSString *networkKey in networks) {
         NSArray <NSString *> *networkComponents = [networkKey componentsSeparatedByString:@"_"];
         NSString *address = [networkComponents firstObject];
-        BlockchainNetworkType chainID = [[networkComponents lastObject] longLongValue];
+//        BlockchainNetworkType chainID = [[networkComponents lastObject] longLongValue];
+        NSString *chainID = [networkComponents lastObject];
         KeychainNetworkModel *networkModel = [KeychainNetworkModel itemModelWithAddress:address chainID:chainID];
         [networkModels addObject:networkModel];
       }
@@ -64,7 +65,7 @@
   return [itemModels copy];
 }
 
-- (void) saveKeydata:(NSData *)keydata forAddress:(NSString *)address ofAccount:(AccountPlainObject *)account inChainID:(BlockchainNetworkType)chainID {
+- (void) saveKeydata:(NSData *)keydata forAddress:(NSString *)address ofAccount:(AccountPlainObject *)account inChainID:(NSString *)chainID {
   NSString *key = [self _keyForUID:account.uid];
   NSString *keydataKey = [self _keyForAddress:address chainID:chainID];
   @synchronized (self) {
@@ -109,7 +110,7 @@
   }
 }
 
-- (NSData *) obtainKeydataOfMasterToken:(MasterTokenPlainObject *)token ofAccount:(AccountPlainObject *)account inChainID:(BlockchainNetworkType)chainID {
+- (NSData *) obtainKeydataOfMasterToken:(MasterTokenPlainObject *)token ofAccount:(AccountPlainObject *)account inChainID:(NSString *)chainID {
   NSString *key = [self _keyForUID:account.uid];
   NSDictionary *item = [self _obtainItemWithKey:key];
   NSString *keydataKey = [self _keyForAddress:token.address chainID:chainID];
@@ -267,13 +268,13 @@
   }
 }
 
-- (NSString *) _keyForAddress:(NSString *)address chainID:(BlockchainNetworkType)chainID {
-  NSString *key = [NSString stringWithFormat:kKeychainServiceV2KeyFormat, address, [@(chainID) stringValue]];
+- (NSString *) _keyForAddress:(NSString *)address chainID:(NSString *)chainID {
+  NSString *key = [NSString stringWithFormat:kKeychainServiceV2KeyFormat, address, chainID];
   return key;
 }
 
-- (NSString *) _historyKeyForAddress:(NSString *)address chainID:(BlockchainNetworkType)chainID {
-  NSString *key = [NSString stringWithFormat:kKeychainServiceV2HistoryKeyFormat, address, [@(chainID) stringValue]];
+- (NSString *) _historyKeyForAddress:(NSString *)address chainID:(NSString *)chainID {
+  NSString *key = [NSString stringWithFormat:kKeychainServiceV2HistoryKeyFormat, address, chainID];
   return key;
 }
 

@@ -1,5 +1,6 @@
-#import "_MasterTokenModelObject.h"
+#import "MasterToken+CoreDataClass.h"
 
-@interface MasterTokenModelObject : _MasterTokenModelObject
+@interface MasterTokenModelObject : MasterToken
 // Custom logic goes here.
++ (NSString*)entityName;
 @end

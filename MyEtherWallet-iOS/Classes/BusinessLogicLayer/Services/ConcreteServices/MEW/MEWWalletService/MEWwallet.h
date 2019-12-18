@@ -13,6 +13,7 @@
 @class AccountPlainObject;
 @class NetworkPlainObject;
 @class MasterTokenPlainObject;
+@class AvaAccount;
 
 @class MEWConnectTransaction;
 @class MEWConnectMessage;
@@ -23,7 +24,7 @@ typedef void(^MEWWalletDataCompletionBlock)(id data);
 
 @protocol MEWwallet <NSObject>
 - (void) createWalletWithPassword:(NSString *)password mnemonicWords:(NSArray <NSString *> *)mnemonicWords account:(AccountPlainObject *)account;
-- (void) createKeysWithChainIDs:(NSSet <NSNumber *> *)chainIDs forAccount:(AccountPlainObject *)account withPassword:(NSString *)password mnemonicWords:(NSArray <NSString *> *)mnemonicWords completion:(MEWwalletCreateCompletionBlock)completion;
+- (void) createKeysForAvaAccount:(AvaAccount *)avaAccount forAccount:(AccountPlainObject *)account withPassword:(NSString *)password mnemonicWords:(NSArray <NSString *> *)mnemonicWords completion:(MEWwalletCreateCompletionBlock)completion;
 - (BOOL) validatePassword:(NSString *)password account:(AccountPlainObject *)account;
 - (void) signMessage:(MEWConnectMessage *)message password:(NSString *)password masterToken:(MasterTokenPlainObject *)masterToken completion:(MEWWalletDataCompletionBlock)completion;
 - (void) signTransaction:(MEWConnectTransaction *)transaction password:(NSString *)password masterToken:(MasterTokenPlainObject *)masterToken completion:(MEWWalletDataCompletionBlock)completion;

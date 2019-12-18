@@ -8,6 +8,6 @@
 #import "BlockchainNetworkTypes.h"
 
 @interface AccountPlainObject : _AccountPlainObject
-- (NetworkPlainObject *) networkForNetworkType:(BlockchainNetworkType)networkType;
+- (NetworkPlainObject *) networkForNetworkType:(NSString *)networkType;
 - (BOOL) isEqualToAccount:(AccountPlainObject *)account;
 @end

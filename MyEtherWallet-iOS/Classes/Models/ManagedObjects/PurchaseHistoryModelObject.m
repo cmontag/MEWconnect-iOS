@@ -9,5 +9,8 @@
 @implementation PurchaseHistoryModelObject
 
 // Custom logic goes here.
++ (NSString*)entityName {
+  return @"PurchaseHistory";
+}
 
 @end

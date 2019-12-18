@@ -7,5 +7,8 @@
 @end
 
 @implementation TokenModelObject
++ (NSString*)entityName {
+  return @"Token";
+}
 
 @end

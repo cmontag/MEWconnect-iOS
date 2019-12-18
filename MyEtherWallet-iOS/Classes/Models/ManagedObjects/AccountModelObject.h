@@ -1,5 +1,6 @@
-#import "_AccountModelObject.h"
+#import "Account+CoreDataClass.h"
 
-@interface AccountModelObject : _AccountModelObject
+@interface AccountModelObject : Account
 // Custom logic goes here.
++ (NSString*)entityName;
 @end

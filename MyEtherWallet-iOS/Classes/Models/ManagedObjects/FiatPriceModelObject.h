@@ -1,4 +1,5 @@
-#import "_FiatPriceModelObject.h"
+#import "FiatPrice+CoreDataClass.h"
 
-@interface FiatPriceModelObject : _FiatPriceModelObject
+@interface FiatPriceModelObject : FiatPrice
++ (NSString*)entityName;
 @end

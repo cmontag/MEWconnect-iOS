@@ -7,8 +7,8 @@
 
 @implementation NetworkPlainObject
 
-- (BlockchainNetworkType) network {
-  return [self.chainID longLongValue];
+- (NSString *) network {
+  return self.chainID;
 }
 
 @end

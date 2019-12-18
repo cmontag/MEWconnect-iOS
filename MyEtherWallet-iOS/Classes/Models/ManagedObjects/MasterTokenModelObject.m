@@ -9,5 +9,8 @@
 @implementation MasterTokenModelObject
 
 // Custom logic goes here.
++ (NSString*)entityName {
+  return @"MasterToken";
+}
 
 @end

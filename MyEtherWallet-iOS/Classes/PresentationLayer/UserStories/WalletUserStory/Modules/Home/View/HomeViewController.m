@@ -6,7 +6,10 @@
 //  Copyright © 2018 MyEtherWallet, Inc. All rights reserved.
 //
 
+@import MagicalRecord;
 @import libextobjc.EXTScope;
+
+#import "AvaWalletService.h"
 
 #import "HomeViewController.h"
 
@@ -18,6 +21,8 @@
 #import "MasterTokenPlainObject.h"
 #import "NetworkPlainObject.h"
 #import "AccountPlainObject.h"
+#import "AccountModelObject.h"
+#import "NetworkModelObject.h"
 
 #import "TokenPlainObject.h"
 #import "FiatPricePlainObject.h"
@@ -40,16 +45,19 @@
 
 static CGFloat kHomeViewControllerBottomDefaultOffset = 38.0;
 
-@interface HomeViewController () <UIScrollViewDelegate, GSKStretchyHeaderViewStretchDelegate, HomeStretchyHeaderDelegate, CardViewDelegate, UISearchBarDelegate>
+@interface HomeViewController () <UIScrollViewDelegate, GSKStretchyHeaderViewStretchDelegate, HomeStretchyHeaderDelegate, CardViewDelegate, UISearchBarDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
 @property (nonatomic, weak) IBOutlet UIButton *connectButton;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) HomeStretchyHeader *headerView;
 @property (nonatomic, strong) IBOutlet UIView *tableHeaderView;
 @property (nonatomic) NSUInteger numberOfTokens;
+@property (nonatomic) NSUInteger numberOfAddresses;
 @property (nonatomic, weak) IBOutlet UIImageView *statusBackgroundImageView;
 @property (nonatomic, weak) IBOutlet UIView *statusView;
 @property (nonatomic, weak) IBOutlet UILabel *statusLabel;
 @property (nonatomic, weak) IBOutlet UIButton *disconnectButton;
+@property (nonatomic, strong) UITextField *addressPicker;
+@property (nonatomic, strong) NSArray<NSString *> *addressArray;
 @property (nonatomic, strong) IBOutlet NSLayoutConstraint *statusBottomContraint;
 @property (nonatomic, strong) IBOutlet NSLayoutConstraint *connectButtonBottomConstraint;
 @end
@@ -113,7 +121,29 @@ static CGFloat kHomeViewControllerBottomDefaultOffset = 38.0;
 
 #pragma mark - HomeViewInput
 
-- (void) setupInitialStateWithNumberOfTokens:(NSUInteger)tokensCount totalPrice:(NSDecimalNumber *)totalPrice {
+- (void) setupInitialStateWithNumberOfTokens:(NSUInteger)tokensCount totalPrice:(NSDecimalNumber *)totalPrice addressArray:(NSArray<NSString *> *)addressArray {
+  self.addressPicker = [[UITextField alloc] initWithFrame:CGRectZero];
+  [self.view addSubview:self.addressPicker];
+  
+  UIPickerView *pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+  pickerView.showsSelectionIndicator = YES;
+  pickerView.dataSource = self;
+  pickerView.delegate = self;
+  
+  // set change the inputView (default is keyboard) to UIPickerView
+  self.addressPicker.inputView = pickerView;
+  self.addressArray = addressArray;
+  
+  // add a toolbar with Cancel & Done button
+  UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+  toolBar.barStyle = UIBarStyleBlackOpaque;
+  
+  UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneTouched:)];
+  UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelTouched:)];
+  
+  // the middle button is to make the Done button align to right
+  [toolBar setItems:[NSArray arrayWithObjects:cancelButton, [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil], doneButton, nil]];
+  self.addressPicker.inputAccessoryView = toolBar;
   UITapGestureRecognizer *dismissTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissTap:)];
   [self.view addGestureRecognizer:dismissTapGesture];
   if (@available(iOS 11.0, *)) {
@@ -128,7 +158,7 @@ static CGFloat kHomeViewControllerBottomDefaultOffset = 38.0;
   
   _numberOfTokens = tokensCount;
   [self.headerView updateTokensPrice:totalPrice];
-  [self.headerView updateTitle:NSLocalizedString(@"MEWconnect", @"Home screen. Title")];
+  [self.headerView updateTitle:NSLocalizedString(@"AVA Wallet", @"Home screen. Title")];
   self.headerView.searchBar.hidden = (tokensCount == 0);
   self.headerView.searchBar.placeholder = [NSString localizedStringWithFormat:NSLocalizedString(@"Search %tu token(s)", @"Wallet. Search field placeholder"), tokensCount];
   
@@ -199,8 +229,8 @@ static CGFloat kHomeViewControllerBottomDefaultOffset = 38.0;
     NetworkPlainObject *network = masterToken.fromNetworkMaster;
     AccountPlainObject *account = network.fromAccount;
     
-    BlockchainNetworkType networkType = [network network];
-    NSString *networkTitle = [BlockchainNetworkTypesInfoProvider stringFromNetworkType:networkType];
+//    BlockchainNetworkType networkType = [network network];
+    NSString *networkTitle = [NSString stringWithFormat:@"%@...", [[network network] substringToIndex:5]];
     [self.headerView.networkButton setTitle:networkTitle forState:UIControlStateNormal];
     [self.headerView.cardView updateWithSeed:masterToken.address];
     
@@ -265,17 +295,35 @@ static CGFloat kHomeViewControllerBottomDefaultOffset = 38.0;
   self.headerView.refreshButton.rotation = NO;
 }
 
-- (void)presentNetworkSelection {
+- (void)presentNetworkSelection:(MasterTokenPlainObject *)masterToken{
+  NetworkPlainObject *network = masterToken.fromNetworkMaster;
+  AccountPlainObject *account = network.fromAccount;
+  NSManagedObjectContext *defaultContext = [NSManagedObjectContext MR_defaultContext];
+  AccountModelObject *accountModelObject = [AccountModelObject MR_findFirstByAttribute:NSStringFromSelector(@selector(uid)) withValue:account.uid inContext:defaultContext];
+//  NSArray *ignoringProperties = @[NSStringFromSelector(@selector(tokens)),
+//                                  NSStringFromSelector(@selector(price)),
+//                                  NSStringFromSelector(@selector(purchaseHistory))];
+//  account = [self.ponsomizer convertObject:accountModelObject ignoringProperties:ignoringProperties];
   @weakify(self);
   UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Select network", @"Wallet. Network selection") message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-  [alert addAction:[UIAlertAction actionWithTitle:@"Main Ethereum network" style:UIAlertActionStyleDefault handler:^(__unused UIAlertAction * _Nonnull action) {
-    @strongify(self);
-    [self.output mainnetAction];
-  }]];
-  [alert addAction:[UIAlertAction actionWithTitle:@"Ropsten Test network" style:UIAlertActionStyleDefault handler:^(__unused UIAlertAction * _Nonnull action) {
-    @strongify(self);
-    [self.output ropstenAction];
-  }]];
+  for (NetworkModelObject *network in accountModelObject.networks) {
+    [alert addAction:[UIAlertAction actionWithTitle:network.chainID style:UIAlertActionStyleDefault handler:^(__unused UIAlertAction * _Nonnull action) {
+      @strongify(self);
+      [self.output avaActionWithSubnet:network.chainID];
+    }]];
+  }
+//  [alert addAction:[UIAlertAction actionWithTitle:@"Main Ethereum network" style:UIAlertActionStyleDefault handler:^(__unused UIAlertAction * _Nonnull action) {
+//    @strongify(self);
+//    [self.output mainnetAction];
+//  }]];
+//  [alert addAction:[UIAlertAction actionWithTitle:@"Athereum Demo network" style:UIAlertActionStyleDefault handler:^(__unused UIAlertAction * _Nonnull action) {
+//    @strongify(self);
+//    [self.output avaAction];
+//  }]];
+//  [alert addAction:[UIAlertAction actionWithTitle:@"Ropsten Test network" style:UIAlertActionStyleDefault handler:^(__unused UIAlertAction * _Nonnull action) {
+//    @strongify(self);
+//    [self.output ropstenAction];
+//  }]];
   [alert addAction:[UIAlertAction actionWithTitle:UIStringList.cancel
                                             style:UIAlertActionStyleCancel
                                           handler:nil]];
@@ -458,6 +506,11 @@ static CGFloat kHomeViewControllerBottomDefaultOffset = 38.0;
   [self _hideKeyboardIfNeeded];
 }
 
+- (IBAction) transactionAction:(__unused id)sender {
+  [self _hideKeyboardIfNeeded];
+  [self.output transactionAction];
+}
+
 - (IBAction) connectAction:(__unused id)sender {
   [self _hideKeyboardIfNeeded];
   [self.output connectAction];
@@ -486,6 +539,34 @@ static CGFloat kHomeViewControllerBottomDefaultOffset = 38.0;
 }
 
 - (IBAction) unwindToHome:(__unused UIStoryboardSegue *)sender {}
+
+#pragma mark - UIPickerViewDataSource
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+  return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+  return [self.addressArray count];
+}
+
+#pragma mark - UIPickerViewDelegate
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+  return [self.addressArray objectAtIndex:row];
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+  [self.output changeAddressAction:[NSNumber numberWithInt:row]];
+}
+
+- (void) doneTouched:(UIBarButtonItem *)sender {
+  [self.addressPicker resignFirstResponder];
+}
+
+- (void) cancelTouched:(UIBarButtonItem *)sender {
+  [self.addressPicker resignFirstResponder];
+}
 
 #pragma mark - GSKStretchyHeaderViewStretchDelegate
 
@@ -544,6 +625,15 @@ static CGFloat kHomeViewControllerBottomDefaultOffset = 38.0;
 
 - (void) cardViewDidTouchBackupStatusButton:(__unused CardView *)cardView {
   
+}
+
+- (void) cardViewDidTouchChangeCardButton:(__unused CardView *)cardView {
+  [self _hideKeyboardIfNeeded];
+  [self.addressPicker becomeFirstResponder];
+}
+
+- (void) cardViewDidSwipeBackground:(__unused CardView *)cardView {
+  [self.output segueAddressAction:@0];
 }
 
 #pragma mark - UISearchBarDelegate

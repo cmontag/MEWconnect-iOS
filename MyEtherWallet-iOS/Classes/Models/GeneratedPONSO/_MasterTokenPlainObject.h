@@ -15,4 +15,6 @@
 
 @property (nonatomic, copy, readwrite) NetworkPlainObject *fromNetworkMaster;
 
+@property (nonatomic, copy, readwrite) NSNumber *active;
+
 @end

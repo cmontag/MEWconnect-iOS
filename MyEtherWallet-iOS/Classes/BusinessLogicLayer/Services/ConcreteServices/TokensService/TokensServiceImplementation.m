@@ -25,6 +25,7 @@
 #import "FiatPriceModelObject.h"
 #import "NetworkModelObject.h"
 #import "NetworkPlainObject.h"
+#import "AddressModelObject.h"
 
 #define DEBUG_BALANCE 0
 #define DEBUG_TOKENS 0
@@ -43,6 +44,7 @@ static NSString *const kMEWDonateAddress = @"0xDECAF9CD2367cdbb726E904cD6397eDFc
 static NSString *const TokensABI = @"[{\"constant\":true,\"inputs\":[{\"name\":\"_owner\",\"type\":\"address\"},{\"name\":\"name\",\"type\":\"bool\"},{\"name\":\"website\",\"type\":\"bool\"},{\"name\":\"email\",\"type\":\"bool\"},{\"name\":\"count\",\"type\":\"uint256\"}],\"name\":\"getAllBalance\",\"outputs\":[{\"name\":\"\",\"type\":\"bytes\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}]";
 static NSString *const MainnetTokensContractAddress = @"0x2783c0a4bfd3721961653a9e9939fc63687bf07f";
 static NSString *const RopstenTokensContractAddress = @"0xb8e1bbc50fd87ea00d8ce73747ac6f516af26dac";
+static NSString *const AthereumTokensContractAddress = @"0x45Ee990218042C161A595B55426e8511e7a4Ac60";
 
 @implementation TokensServiceImplementation
 
@@ -62,22 +64,56 @@ static NSString *const RopstenTokensContractAddress = @"0xb8e1bbc50fd87ea00d8ce7
   masterToken.address = originalPublicAddress;
 #endif
   [rootSavingContext performBlock:^{
-    CompoundOperationBase *compoundOperation = [self.tokensOperationFactory ethereumBalanceWithBody:body inNetwork:[masterToken.fromNetworkMaster network]];
-    [compoundOperation setResultBlock:^(__unused NSArray <MasterTokenModelObject *> *data, NSError *error) {
-#if DEBUG_BALANCE
-      MasterTokenModelObject *masterTokenModelObject = [MasterTokenModelObject MR_findFirstByAttribute:NSStringFromSelector(@selector(address)) withValue:masterToken.address inContext:rootSavingContext];
-      masterTokenModelObject.balance = [data firstObject].balance;
-      masterTokenModelObject.decimals = [data firstObject].decimals;
-      [rootSavingContext MR_deleteObjects:data];
-      [rootSavingContext MR_saveToPersistentStoreAndWait];
-#endif
+//    CompoundOperationBase *compoundOperation = [self.tokensOperationFactory ethereumBalanceWithBody:body inNetwork:[masterToken.fromNetworkMaster network]];
+    // 1
+    NSURL *url = [NSURL URLWithString:@"https://ava.network:21015/ext/wallet"];
+    NSURLSession *session = [NSURLSession sharedSession];
+
+    // 2
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    request.HTTPMethod = @"POST";
+    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+
+    // 3
+    NSDictionary *dictionary = @{@"jsonrpc": @"2.0", @"method":@"Wallet.GetBalance", @"params":@{@"SubnetID":masterToken.fromNetworkMaster.chainID, @"Address":masterToken.address, @"AssetID":@"23wKfz3viWLmjWo2UZ7xWegjvnZFenGAVkouwQCeB9ubPXodG6"}, @"id":@1};
+    NSError *error = nil;
+    NSData *body = [NSJSONSerialization dataWithJSONObject:dictionary options:kNilOptions error:&error];
+    [request setHTTPBody:body];
+
+    NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
       dispatch_async(dispatch_get_main_queue(), ^{
+        if (!error) {
+          NSDictionary *payload = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+          NSDecimalNumber *balance = payload[@"result"][@"Balance"];
+          MasterTokenModelObject *masterTokenModelObject = [MasterTokenModelObject MR_findFirstByAttribute:NSStringFromSelector(@selector(address)) withValue:masterToken.address inContext:rootSavingContext];
+          masterTokenModelObject.balance = balance;
+  //        masterTokenModelObject.decimals = [data firstObject].decimals;
+  //        [rootSavingContext MR_deleteObjects:data];
+          [rootSavingContext MR_saveToPersistentStoreAndWait];
+        }
         if (completion) {
           completion(error);
         }
       });
     }];
-    [self.operationScheduler addOperation:compoundOperation];
+
+    [postDataTask resume];
+//    [compoundOperation setResultBlock:^(__unused NSArray <MasterTokenModelObject *> *data, NSError *error) {
+//#if DEBUG_BALANCE
+//      MasterTokenModelObject *masterTokenModelObject = [MasterTokenModelObject MR_findFirstByAttribute:NSStringFromSelector(@selector(address)) withValue:masterToken.address inContext:rootSavingContext];
+//      masterTokenModelObject.balance = [data firstObject].balance;
+//      masterTokenModelObject.decimals = [data firstObject].decimals;
+//      [rootSavingContext MR_deleteObjects:data];
+//      [rootSavingContext MR_saveToPersistentStoreAndWait];
+//#endif
+//      dispatch_async(dispatch_get_main_queue(), ^{
+//        if (completion) {
+//          completion(error);
+//        }
+//      });
+//    }];
+//    [self.operationScheduler addOperation:compoundOperation];
   }];
 
 }
@@ -96,6 +132,8 @@ static NSString *const RopstenTokensContractAddress = @"0xb8e1bbc50fd87ea00d8ce7
   BlockchainNetworkType network = [masterToken.fromNetworkMaster network];
   if (network == BlockchainNetworkTypeEthereum) {
     contractAddress = MainnetTokensContractAddress;
+  } else if (network == BlockchainNetworkTypeAva) {
+    contractAddress = AthereumTokensContractAddress;
   } else {
     contractAddress = RopstenTokensContractAddress;
   }
@@ -110,15 +148,15 @@ static NSString *const RopstenTokensContractAddress = @"0xb8e1bbc50fd87ea00d8ce7
     [compoundOperation setResultBlock:^(NSArray <TokenModelObject *> *data, NSError *error) {
       if (!error) {
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.master.address ==[c] %@", masterToken.address];
-        NetworkModelObject *networkModelObject = [NetworkModelObject MR_findFirstWithPredicate:predicate inContext:rootSavingContext];
+        AddressModelObject *addressModelObject = [AddressModelObject MR_findFirstWithPredicate:predicate inContext:rootSavingContext];
         if ([data isKindOfClass:[NSArray class]]) {
-          if ([networkModelObject.tokens count] == 0) {
-            [networkModelObject addTokens:[NSSet setWithArray:data]];
+          if ([addressModelObject.tokens count] == 0) {
+            [addressModelObject addTokens:[NSSet setWithArray:data]];
           } else {
             NSMutableArray *tokensToAdd = [[NSMutableArray alloc] initWithArray:data];
             NSMutableArray *tokensToDelete = [[NSMutableArray alloc] initWithCapacity:0];
             
-            NSArray <TokenModelObject *> *tokens = [networkModelObject.tokens allObjects];
+            NSArray <TokenModelObject *> *tokens = [addressModelObject.tokens allObjects];
             for (TokenModelObject *token in tokens) {
               NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.address ==[c] %@", token.address];
               TokenModelObject *refreshingToken = [[data filteredArrayUsingPredicate:predicate] firstObject];
@@ -135,7 +173,7 @@ static NSString *const RopstenTokensContractAddress = @"0xb8e1bbc50fd87ea00d8ce7
               [rootSavingContext MR_deleteObjects:tokensToDelete];
             }
             if ([tokensToAdd count] > 0) {
-              [networkModelObject addTokens:[NSSet setWithArray:tokensToAdd]];
+              [addressModelObject addTokens:[NSSet setWithArray:tokensToAdd]];
             }
           }
         }
@@ -172,7 +210,7 @@ static NSString *const RopstenTokensContractAddress = @"0xb8e1bbc50fd87ea00d8ce7
   NSArray <TokenModelObject *> *tokens = [TokenModelObject MR_findAllWithPredicate:predicate inContext:context];
   NSDecimalNumber *totalPrice = [NSDecimalNumber zero];
   for (TokenModelObject *tokenModelObject in tokens) {
-    NSDecimalNumber *decimals = [NSDecimalNumber decimalNumberWithMantissa:1 exponent:[tokenModelObject.decimals shortValue] isNegative:NO];
+    NSDecimalNumber *decimals = [NSDecimalNumber decimalNumberWithMantissa:1 exponent:tokenModelObject.decimals isNegative:NO];
     NSDecimalNumber *tokenBalance = [tokenModelObject.balance decimalNumberByDividingBy:decimals];
     NSDecimalNumber *price = [tokenBalance decimalNumberByMultiplyingBy:tokenModelObject.price.usdPrice];
     totalPrice = [totalPrice decimalNumberByAdding:price];
@@ -180,11 +218,15 @@ static NSString *const RopstenTokensContractAddress = @"0xb8e1bbc50fd87ea00d8ce7
   return totalPrice;
 }
 
-- (MasterTokenModelObject *) obtainActiveMasterToken {
+- (AddressModelObject *) obtainActiveAddress {
   NSManagedObjectContext *context = [NSManagedObjectContext MR_defaultContext];
-  NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.fromNetworkMaster.active = YES && SELF.fromNetworkMaster.fromAccount.active = YES"];
-  MasterTokenModelObject *masterToken = [MasterTokenModelObject MR_findFirstWithPredicate:predicate inContext:context];
-  return masterToken;
+  NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.fromNetwork.active = YES && SELF.fromNetwork.fromAccount.active = YES"];
+  AddressModelObject *address = [AddressModelObject MR_findFirstWithPredicate:predicate inContext:context];
+  return address;
+}
+
+- (MasterTokenModelObject *) obtainActiveMasterToken {
+  return [self obtainActiveAddress].master;
 }
 
 - (TokenModelObject *) obtainTokenWithAddress:(NSString *)address ofMasterToken:(MasterTokenPlainObject *)masterToken {

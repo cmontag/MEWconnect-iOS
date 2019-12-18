@@ -10,12 +10,12 @@
 
 @interface KeychainNetworkModel ()
 @property (nonatomic, strong) NSString *address;
-@property (nonatomic) BlockchainNetworkType chainID;
+@property (nonatomic) NSString *chainID;
 @end
 
 @implementation KeychainNetworkModel
 
-+ (instancetype) itemModelWithAddress:(NSString *)address chainID:(BlockchainNetworkType)chainID {
++ (instancetype) itemModelWithAddress:(NSString *)address chainID:(NSString *)chainID {
   KeychainNetworkModel *itemModel = [[[self class] alloc] init];
   itemModel.address = address;
   itemModel.chainID = chainID;

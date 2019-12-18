@@ -22,6 +22,7 @@
 #import "QRScannerModuleInput.h"
 #import "ContextPasswordModuleInput.h"
 #import "RestoreSeedModuleInput.h"
+#import "AvaTransactionModuleInput.h"
 
 #import "ConfirmationStoryModuleOutput.h"
 #import "ContextPasswordModuleOutput.h"
@@ -39,6 +40,7 @@ static NSString *const kHomeToStartUnwindSegueIdentifier      = @"HomeToStartUnw
 static NSString *const kHomeToShareSegueIdentifier            = @"HomeToShareSegueIdentifier";
 static NSString *const kHomeToContextPasswordSegueIdentifier  = @"HomeToContextPasswordSegueIdentifier";
 static NSString *const kHomeToRestoreSeedSegueIdentifier      = @"HomeToRestoreSeedSegueIdentifier";
+static NSString *const kHomeToAvaTransactionSegueIdentifier   = @"HomeToAvaTransactionSegueIdentifier";
 
 @implementation HomeRouter
 
@@ -52,8 +54,15 @@ static NSString *const kHomeToRestoreSeedSegueIdentifier      = @"HomeToRestoreS
 }
 
 - (void) openScanner {
-  [[self.transitionHandler openModuleUsingSegue:kHomeToScannerSegueIdentifier] thenChainUsingBlock:^id<RamblerViperModuleOutput>(id<QRScannerModuleInput> moduleInput) {
+  [[self.transitionHandler openModuleUsingSegue:kHomeToAvaTransactionSegueIdentifier] thenChainUsingBlock:^id<RamblerViperModuleOutput>(id<QRScannerModuleInput> moduleInput) {
     [moduleInput configureModule];
+    return nil;
+  }];
+}
+
+- (void) openAvaTransactionWithMasterToken:(MasterTokenPlainObject *)masterToken {
+  [[self.transitionHandler openModuleUsingSegue:kHomeToAvaTransactionSegueIdentifier] thenChainUsingBlock:^id<RamblerViperModuleOutput>(id<AvaTransactionModuleInput> moduleInput) {
+    [moduleInput configureModuleWithMasterToken:masterToken];
     return nil;
   }];
 }
